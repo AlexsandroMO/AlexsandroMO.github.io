@@ -79,6 +79,19 @@ function searchCable(ckt){ //Encontrar seção do cabo
         }    
     }
 
-    return new_cable[new_cable.length - 1]
+    let cable = new_cable[new_cable.length - 1]
+
+    let tipo = document.getElementById('id_r_type_circuit').value
+
+    if (cable <= 1.5 && tipo == 'Iluminação'){
+        cable = 1.5
+        //console.log('result:', cable)
+    }
+    else if (cable <= 1.5 && tipo != "Iluminação"){
+        cable = 2.5
+        //console.log('result:', cable)
+    }
+
+    return cable
 
 }

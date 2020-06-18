@@ -28,6 +28,9 @@ function addCircuit(){
     //searchCable(ckt)
     let calc = calculos(ckt);
 
+    console.log('Até Calc', calc)
+   
+
     createDbCircuit();
     addData(ckt, calc);
 
@@ -36,6 +39,7 @@ function addCircuit(){
     setTimeout(function() {
         window.location.href = "lista-circuitos.html";
     }, 1000);
+
 }
 
 function obtemCKTFormulario(form) {
@@ -203,5 +207,3 @@ function deletaId(id){
 
 //Como apturar url parâmetros
 //https://www.blogson.com.br/como-ler-parametros-da-url-com-javascript/
-
-
