@@ -1,5 +1,5 @@
 
-//var db = openDatabase('myDB', '1.0', 'Mybase', 1024);
+//var db = openDatabase('myDB', '2.0', 'Mybase', 1024);
 
 //===================================================
 
