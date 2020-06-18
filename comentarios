@@ -1,0 +1,37 @@
+'''Upload documents on Github
+git clone <nome>
+<entra na pasta criada>
+git add .
+git commit -m "texto"
+git push
+git pull
+'''
+
+'''git checkout -b nome cria uma branch
+git checkout nome entra na branch
+git branch - verifica as branchs
+git checkout master - entra na master
+git merge origin "nome" 
+git push origin master - subir commit
+git branch -D "nome"- deletar branch
+'''
+
+
+Dados do projeto
+
+proj            : PROJETO = Nome do Projeto
+local           : LOCAL = Local da instação
+tipo_ckt        : TIPO = Tipo de instalação
+tens_va         : TENSÃO (VA) = tensão de operação
+qt_ckt          : QUANT. = qt de ckt
+power_va        : POTÊNCIA (VA) = potência do ckt
+carga_total     : TOTAL (VA) = total da carga                   >>      (qt_ckt * power_va)
+corr_total      : CORRENTE (VA) =  corrente total do ckt        >>      (carga_total / tens_va)
+comp_ckt        : COMP. CKT = Comprimento do ckt
+secao_conduto   : SEÇÃO CONDUTOR                                >>      Tabela de condutores
+qd_tens_perm    : QUEDA TENSÃO PERMITIDA(%)
+n_polos         : N DE CONDUTORES
+corr_nom        : CORRENTE NOMINAL                              >>      Disjuntor aplicável
+arrangCable     : ARRANJO DE CABOS                              >> conforme tabela 36 NBR-5410
+dj              : DJ Usual	                                    >>      Disjuntor aplicável
+

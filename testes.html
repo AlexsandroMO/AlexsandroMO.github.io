@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+
+</body>
+
+<script>
+    
+var query = location.search.slice(1);
+var partes = query.split('&');
+var data = {};
+partes.forEach(function (parte) {
+    var chaveValor = parte.split('=');
+    var chave = chaveValor[0];
+    var valor = chaveValor[1];
+    data[chave] = valor;
+});
+
+alert(JSON.stringify(data, null, 4)); // Object {lang: "pt", page: "home"}
+
+
+</script>
+</html>
+  
+
+
+<!-- //https://www.devmedia.com.br/javascript-get-url/28531 -->
+
