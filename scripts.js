@@ -1,6 +1,5 @@
 //https://respostas.guj.com.br/31984-como-criar-um-header-e-um-footer-fixos-para-todas-as-paginas
 
-
 $(document).ready(function(){
 
     var baseUrl    = 'https://8000-a4494a87-5e96-4212-9efb-04d304f99a58.ws-us02.gitpod.io/';
@@ -9,8 +8,6 @@ $(document).ready(function(){
     var searchForm = $('#search-form');
     var filtery    = $('#filtery');
     
-
-
     $(deleteBtn).on('click', function(e){
         e.preventDefault();
 
@@ -34,8 +31,23 @@ $(document).ready(function(){
     });
 });
 
+//document.getElementById('click-out').addEventListener('click', Fechar);
+
+function close() {
+    console.log('>>>>>');
+    //window.location.replace("index.html");
+    close();
+    //window.open('index.html', '_blank');
+}
 
 
+//"javascript:window.close()"
+
+// Mesmo comportamento de um Redirecionamento HTTP
+//window.location.replace("cadastroDoador.html");
+
+// Mesmo comportamento de um click em um link
+//window.location.href = "cadastroDoador.html";
 
 /* 
 let projetos = document.createElement('select')

@@ -5,9 +5,11 @@ function calculos(ckt){
     let corr_nom; 
     let DJ = []
 
+    //Problemas aqui <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     for (i=0;i<corrente_nominal.length;i++){
-        if (corrente_nominal[i].secao == bitola){
-            corr_nom = corrente_nominal[i].capacidade_cond //encontrar corrente nominal
+        alert('>>> corr n: ', corrente_nominal[i].secao)
+        if (corrente_nominal[i].secao >= bitola){
+            corr_nom = Math.round(corrente_nominal[i].capacidade_cond) //encontrar corrente nominal
         }else{
             corr_nom = 10
         }
@@ -20,8 +22,13 @@ function calculos(ckt){
     //---------------
 
     for (i=0;i<lista_DJ.length;i++){
-        if (lista_DJ[i] > corr_nom){
+        if (lista_DJ[i] > corr_nom && corr_nom < 14){
+            DJ.push(10) //encontrar DJ
+        }
+        else if (lista_DJ[i] > corr_nom && corr_nom > 14){
             DJ.push(lista_DJ[i]) //encontrar DJ
+            console.log('>>>>>>>>> lista DJ', lista_DJ[i])
+            alert('>>>lista: ',lista_DJ[i])
         }
     }
 
@@ -45,7 +52,7 @@ function calculos(ckt){
 
 function searchCable(ckt){ //Encontrar seção do cabo
 
-    let corr_total = ((ckt.qtCKT * ckt.powerVA) / ckt.tensVa)
+    let corr_total = Math.round(((ckt.qtCKT * ckt.powerVA) / ckt.tensVa))
     if (corr_total < 10){
         corr_total = 10
     }
@@ -88,7 +95,7 @@ function searchCable(ckt){ //Encontrar seção do cabo
         //console.log('result:', cable)
     }
     else if (cable <= 1.5 && tipo != "Iluminação"){
-        cable = 2.5
+        cable = cable 
         //console.log('result:', cable)
     }
 

@@ -13,9 +13,29 @@
 
 </head>
 <body>
-    <div class="container-fluid">
-        <iframe src="header.html"></iframe>
-    </div>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="index.html" id="click-out">Meus Projetos</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto" id="alinha-nav">
+                  <li class="nav-item">
+                      <a class="nav-link" href="index.html" id="click-out" target="_blank" >Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="create-project.html" target="_blank">Projetos</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Calculadora CKT</a>
+                  </li>
+              <form method="GET" id="search-form">
+                  <span><input class="form-control" type="search" id="search" name="search" placeholder="Localizar Circuito" value="">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-btn" onclick="funcao_alerta()" value="Exibir Alert">Pesquisar</button></span>
+              </form>
+          </ul>
+        </div>
+      </nav>
 <!-- Create Circtuit-->
 <div class="offset-1 col-10 list-div">
     <h3>Adicione um Novo Circuito</h3>

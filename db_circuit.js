@@ -28,16 +28,15 @@ function addCircuit(){
     //searchCable(ckt)
     let calc = calculos(ckt);
 
-    console.log('Até Calc', calc)
+    console.log('Até Calc foi', calc)
    
-
     createDbCircuit();
     addData(ckt, calc);
 
     form.reset();
 
     setTimeout(function() {
-        window.location.href = "lista-circuitos.html";
+        window.location.href = "index.html";
     }, 1000);
 
 }

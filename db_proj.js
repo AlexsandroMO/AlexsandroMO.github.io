@@ -26,7 +26,7 @@ function addProj(){
     form.reset();
 
     setTimeout(function() {
-        window.location.href = "home.html";
+        window.location.href = "index.html";
     }, 1000);
 }
 
@@ -47,8 +47,7 @@ function addDataProj(proj){
     });
 }
 
-//------------------------------------
-
+//----------------------------------
 //==================================
 function readProjDB(){
 
