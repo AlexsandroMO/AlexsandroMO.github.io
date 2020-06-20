@@ -7,7 +7,6 @@ function calculos(ckt){
 
     //Problemas aqui <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     for (i=0;i<corrente_nominal.length;i++){
-        alert('>>> corr n: ', corrente_nominal[i].secao)
         if (corrente_nominal[i].secao >= bitola){
             corr_nom = Math.round(corrente_nominal[i].capacidade_cond) //encontrar corrente nominal
         }else{
@@ -16,19 +15,18 @@ function calculos(ckt){
     }
 
     //evitar não entrar na tabela por ser menor que 9A
-    if(corr_nom < 10){
+    if(corr_nom <= 10){
         corr_nom = 10
     }
     //---------------
 
     for (i=0;i<lista_DJ.length;i++){
-        if (lista_DJ[i] > corr_nom && corr_nom < 14){
+        if (lista_DJ[i] < 12){
             DJ.push(10) //encontrar DJ
         }
-        else if (lista_DJ[i] > corr_nom && corr_nom > 14){
+        else if (lista_DJ[i] > corr_nom){
             DJ.push(lista_DJ[i]) //encontrar DJ
             console.log('>>>>>>>>> lista DJ', lista_DJ[i])
-            alert('>>>lista: ',lista_DJ[i])
         }
     }
 
