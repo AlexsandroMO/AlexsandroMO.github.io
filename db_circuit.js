@@ -62,7 +62,7 @@ function obtemCKTFormulario(form) {
 function addData(ckt, calc){
 
     db.transaction(function(tx) {
-        tx.executeSql('INSERT INTO circuit (projeto, local, tipo_ckt, tens_va, qt_ckt, power_va, carga_total, corr_total, comp_ckt, secao_condutor, qd_tens_perm, n_polos, arrang_cable, corr_nom, dj) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [ckt.projeto, ckt.local, ckt.tipoCKT, ckt.tensVa, ckt.qtCKT, ckt.powerVA, calc.cargaTotal, calc.corrTotal, ckt.compCKT, calc.secaoCondutor, ckt.qdTensPerm, ckt.nPolos, ckt.arrangCable, calc.corrNom, calc.dj]);
+        tx.executeSql('INSERT INTO circuit (projeto, local, tipo_ckt, tens_va, qt_ckt, power_va, carga_total, corr_total, comp_ckt, secao_condutor, qd_tens_perm, n_polos, arrang_cable, corr_nom, dj) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [ckt.projeto, ckt.local, ckt.tipoCKT, ckt.tensVa, ckt.qtCKT, Math.round(ckt.powerVA), Math.round(calc.cargaTotal), Math.round(calc.corrTotal), ckt.compCKT, calc.secaoCondutor, ckt.qdTensPerm, ckt.nPolos, ckt.arrangCable, Math.round(calc.corrNom), calc.dj]);
 
     });
 
