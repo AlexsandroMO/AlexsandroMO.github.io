@@ -28,6 +28,8 @@ function addCircuit(){
     //searchCable(ckt)
     let calc = calculos(ckt);
 
+
+    alert('<<<<<>>>>>>>')
     console.log('Até Calc foi', calc)
    
     createDbCircuit();

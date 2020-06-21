@@ -13,8 +13,6 @@ function createDbProj(){
  
 } 
 
-
-
 function addProj(){
 
     let form = document.querySelector("#form-adiciona-proj");
@@ -60,10 +58,6 @@ function readProjDB(){
                 <th scope="col">Editar Projeto</th>\
                 <th scope="col">Excluir Projeto</th>'
 
-                // <i class="fas fa-plus"></i>
-  
-    //titulo.innerHTML = 'Estoque de Produtos'
-  
     cabecalho.innerHTML = dados
     cabecalho.classList.add('thead-dark')
     tabela.classList.add('table')
@@ -74,8 +68,6 @@ function readProjDB(){
     document.getElementById('ajusta-tabela-proj').appendChild(tabela)
   
   }
-  
-  //function handleFileSelect(evt) {
 
   function montaBodyProj(){
     
@@ -101,13 +93,12 @@ function readProjDB(){
     }, null);
   
     });
-  
+    
     return corpo;
   
   }
 
 
-  
 function chamaCircuitId(id_proj){//
 
     setTimeout(function() {
@@ -116,19 +107,20 @@ function chamaCircuitId(id_proj){//
 
     console.log(id_proj)
 
-    var tabela = document.createElement('table')
-    var corpo = document.createElement('tbody')
+    // var tabela = document.createElement('table')
+    // var corpo = document.createElement('tbody')
 
-    cabecalho = chamaThead();
+    // cabecalho = chamaThead();
 
-    tabela.classList.add('table')
+    // tabela.classList.add('table')
 
-    tabela.appendChild(cabecalho);
+    // tabela.appendChild(cabecalho);
 
-    tabela.appendChild(montaBodyCKT(id_proj));
-
+    //tabela.appendChild(montaBodyCKT(id_proj));
   
-    document.getElementById('ajusta-tabela').appendChild(tabela);
+    //document.getElementById('ajusta-tabela').appendChild(tabela);
+
+
     
 }
 

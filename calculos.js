@@ -2,34 +2,40 @@
 function calculos(ckt){
 
     let bitola = searchCable(ckt);
-    let corr_nom; 
+    let corr_nom = []
     let DJ = []
 
     //Problemas aqui <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     for (i=0;i<corrente_nominal.length;i++){
+        console.log('geral : ', corrente_nominal[i].secao, bitola)
         if (corrente_nominal[i].secao >= bitola){
-            corr_nom = Math.round(corrente_nominal[i].capacidade_cond) //encontrar corrente nominal
-        }else{
-            corr_nom = 10
+            console.log('entrou na corrente:', corrente_nominal[i].secao, bitola)
+            corr_nom.push(corrente_nominal[i].capacidade_cond) //encontrar corrente nominal
         }
+          //else{
+//             corr_nom.push(10)
+//         }
     }
-
+   
     //evitar não entrar na tabela por ser menor que 9A
-    if(corr_nom <= 10){
-        corr_nom = 10
-    }
+/*     if(corr_nom[0] <= 10){
+        corr_nom.push(10)
+    } */
     //---------------
+    console.log('>>corrente: ', corr_nom[0])
 
     for (i=0;i<lista_DJ.length;i++){
+        console.log('>>>>>>>>> lista DJ', lista_DJ[i], corr_nom[0])
         if (lista_DJ[i] < 12){
             DJ.push(10) //encontrar DJ
+            console.log('entrou lista DJ <', lista_DJ[i], corr_nom[0])
         }
-        else if (lista_DJ[i] > corr_nom){
+        else if (lista_DJ[i] > corr_nom[0]){
             DJ.push(lista_DJ[i]) //encontrar DJ
-            console.log('>>>>>>>>> lista DJ', lista_DJ[i])
+            console.log('entrou lista DJ >', lista_DJ[i], corr_nom[0])
         }
     }
-
+  
     //evitar não entrar na tabela por ser menor que 9A
     let ct = ((ckt.qtCKT * ckt.powerVA) / ckt.tensVa)
     if (ct < 10){
@@ -41,10 +47,10 @@ function calculos(ckt){
         cargaTotal: (ckt.qtCKT * ckt.powerVA),
         corrTotal: ct,
         secaoCondutor: bitola,
-        corrNom : Math.round(corr_nom),
+        corrNom : Math.round(corr_nom[0]),
         dj : DJ[0]
     }
-
+    alert('>>>>>')
     return list_calc;
 }
 
