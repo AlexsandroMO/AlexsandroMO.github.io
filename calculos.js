@@ -12,15 +12,13 @@ function calculos(ckt){
             console.log('entrou na corrente:', corrente_nominal[i].secao, bitola)
             corr_nom.push(corrente_nominal[i].capacidade_cond) //encontrar corrente nominal
         }
-          //else{
-//             corr_nom.push(10)
-//         }
+
     }
    
     //evitar não entrar na tabela por ser menor que 9A
-/*     if(corr_nom[0] <= 10){
+    if(corr_nom[0] <= 20){
         corr_nom.push(10)
-    } */
+    }
     //---------------
     console.log('>>corrente: ', corr_nom[0])
 
@@ -50,7 +48,7 @@ function calculos(ckt){
         corrNom : Math.round(corr_nom[0]),
         dj : DJ[0]
     }
-    alert('>>>>>')
+
     return list_calc;
 }
 
@@ -99,6 +97,10 @@ function searchCable(ckt){ //Encontrar seção do cabo
         //console.log('result:', cable)
     }
     else if (cable <= 1.5 && tipo != "Iluminação"){
+        cable = 2.5
+        //console.log('result:', cable)
+    }
+    else if (cable > 2.5 && tipo != "Iluminação"){
         cable = cable 
         //console.log('result:', cable)
     }

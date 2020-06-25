@@ -28,9 +28,7 @@ function addCircuit(){
     //searchCable(ckt)
     let calc = calculos(ckt);
 
-
-    alert('<<<<<>>>>>>>')
-    console.log('Até Calc foi', calc)
+    //console.log('Até Calc foi', calc)
    
     createDbCircuit();
     addData(ckt, calc);
@@ -153,11 +151,13 @@ function readDB(){
         db.transaction(function (tx){
         tx.executeSql('SELECT * FROM circuit where projeto = ?', [id_proj], function (tx, resultado){
             let rows = resultado.rows
+
             let tr = ''
 
             for (let i=0;i<rows.length;i++){
+
             tr += '<tr>';
-                tr += '<td onclick="chamaId('+ rows[i].id  +')"><i class="fas fa-edit"></td>';
+                tr += `<td onclick="chamaEditCKT('${rows[i].id}')"><i class="fas fa-edit"></td>`;
                 tr += '<td>' + rows[i].local + ' </td>';
                 tr += '<td>' + rows[i].tipo_ckt + ' </td>';
                 tr += '<td>' + rows[i].tens_va + ' </td>';
@@ -177,7 +177,7 @@ function readDB(){
                 }
                 corpo.innerHTML = tr
                 table_circuit.innerHTML = `Tabela de Circuitos - ${id_proj}`
-    
+
             }, null);
     
         });
@@ -196,15 +196,161 @@ function readDB(){
 }
 
 
+function chamaEditCKT(id_proj){
+    console.log('>>: ', id_proj)
+
+    db.transaction(function (tx){
+        tx.executeSql('SELECT * FROM circuit where id = ?', [id_proj], function (tx, resultado){
+            let rows = resultado.rows
+            let id_projeto;
+            let id_local;
+            let id_tipo;
+            let id_tens;
+            let id_qt;
+            let id_power;
+            let id_carga;
+            let id_corr;
+            let id_comp;
+            let id_secao;
+            let id_perm;
+            let id_polos;
+            let id_arrang_calbe;
+            let id_corr_nom;
+            let id_dj;
+    
+                for (let i=0;i<rows.length;i++){
+                    console.log('funcioanndo: ', rows[i].local)
+
+                    id_projeto = rows[i].projeto
+                    id_local = rows[i].local
+                    id_tipo = rows[i].tipo_ckt
+                    id_tens = rows[i].tens_va
+                    id_qt = rows[i].qt_ckt
+                    id_power = rows[i].power_va
+                    id_carga = rows[i].carga_total
+                    id_corr_total = rows[i].corr_total
+                    id_comp = rows[i].comp_ckt
+                    id_secao = rows[i].secao_condutor
+                    id_perm = rows[i].qd_tens_perm
+                    id_polos = rows[i].n_polos
+                    id_arrang_calbe = rows[i].arrang_cable
+                    id_corr_nom = rows[i].corr_nom
+                    id_dj = rows[i].dj
+                }
+
+                console.log('ID_PROJ: ',id_projeto)
+
+                setTimeout(function() {
+
+                    window.location.href = `edit-ckt.html?${id_projeto}?${id_local}?${id_tipo}?${id_tens}?${id_qt}?${id_power}?${id_carga}?${id_corr_total}?${id_comp}?${id_secao}?${id_perm}?${id_polos}?${id_arrang_calbe}?${id_corr_nom}?${id_dj}`
+                    }, 1000);
+
+            }, null);
+
+        });
+
+}
+
+//colocar o resto dos forms  <<<<<<<<<<<<<<<<<<<<<<<<<<
+
+function obtemCKTFormEdit(form) {
+
+    var ckt = {
+        projeto: form.id_r_project.value, //PROJETO
+        local: form.id_r_local.value, //LOCAL
+        tipoCKT: form.id_r_type_circuit.value, //TIPO
+        tensVa: form.id_r_tension.value, //TENSAO_VA
+        secao: form.id_r_secao_cond.value,
+        qtCKT: form.id_r_numbers_points.value, //QUANT
+        powerVA: form.id_r_power_va.value, //POTENCIA_TOTAL
+        compCKT: form.id_r_circuit_length.value, //COMP_CKT
+        qdTensPerm: form.id_r_volt_drop_allow.value, //QUEDA_TENSAO
+        nPolos: form.id_r_numero_polos.value, //N_DE_POLOS
+        arrangCable: form.id_r_arrang_cable.value, //N_DE_POLOS
+    }
+    
+
+    document.getElementById('id_r_project').value = _id[1]
+        document.getElementById('id_r_local').value = _id[2]
+        document.getElementById('id_r_type_circuit').value = _id[3]
+        document.getElementById('id_r_tension').value = _id[4]
+        document.getElementById('id_r_numbers_points').value = _id[5]
+        document.getElementById('id_r_secao_cond').value = _id[10]
+        document.getElementById('id_r_power_va').value = _id[6]
+        document.getElementById('id_r_total_va').value = _id[8]
+        document.getElementById('id_r_corrente_va').value = _id[7]
+        document.getElementById('id_r_circuit_length').value = _id[9]
+        document.getElementById('id_r_volt_drop_allow').value = _id[11]
+        document.getElementById('id_r_numero_polos').value = _id[12]
+        document.getElementById('id_r_arrang_cable').value = _id[13]
+        document.getElementById('id_r_corr_nom').value = _id[14]
+        document.getElementById('id_r_dj').value = _id[15]
+    return ckt;
+}
 
 
-//tx.executeSql("DROP TABLE myTable" );
-//tx.executeSql('DROP DATABASE myDB');
+function addCircuit(){
+
+    let form = document.querySelector("#form-edita");
+
+    let ckt = obtemCKTFormulario(form);
+
+    console.log('CKT: ',ckt)
+
+/*     db.transaction(function(tx) {
+ 
+        tx.executeSql('UPDATE circuit SET projeto=?, local=?, tipo_ckt=?, tens_va=?, qt_ckt=?, power_va=?, carga_total=?, corr_total=?, comp_ckt=?, secao_condutor=?, qd_tens_perm=?, n_polos=?, arrang_cable=?, corr_nom=?, dj=?', [nome,idade,cep,cidade,estado,bairro,rua,numero,mail,pass,id],null);
+    });
+ */
+    
+
+}
+
 
 function deletaId(id){
     console.log('eita foi!!!: ', id)
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Como apturar url parâmetros
 //https://www.blogson.com.br/como-ler-parametros-da-url-com-javascript/
+
+
+
+
+/* let data_ckt = {
+    id_project : id_proj,
+    id_local : rows[i].local,
+    id_tipo : rows[i].tipo_ckt,
+    id_tens : rows[i].tens_va,
+    id_power : rows[i].power_va,
+    id_carga : rows[i].carga_total,
+    id_corr : rows[i].corr_total,
+    id_secao : rows[i].secao_condutor,
+    id_perm : rows[i].qd_tens_perm,
+    id_polos : rows[i].n_polos,
+    id_arrang_calbe : rows[i].arrang_cable,
+    id_corr_nom : rows[i].corr_nom,
+    id_dj : rows[i].dj
+}
+
+let data_ckt2 = [
+    id_proj,rows[i].local,rows[i].tipo_ckt,rows[i].tens_va,rows[i].power_va,rows[i].carga_total,rows[i].corr_total,rows[i].secao_condutor,rows[i].qd_tens_perm,rows[i].n_polos,rows[i].arrang_cable,rows[i].corr_nom,rows[i].dj
+]  */

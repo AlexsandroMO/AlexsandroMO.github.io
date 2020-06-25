@@ -41,17 +41,12 @@
     <h3>Adicione um Novo Circuito</h3>
     <form id="form-adiciona">
         <div id="div_id_r_project" class="form-group">
-            <label for="id_r_project" class=" requiredField">
+            <label for="id_r_project" class="requiredField">
                 Nome do Projeto<span class="asteriskField">*</span>
             </label>
             <div class="">
                 <input type="text" name="r_project" class="numberinput form-control" required id="id_r_project">
             </div>
-   <!--          <div class="">
-                <select name="r_project" class="select form-control" required id="id_r_project">
-                </select>
-            </div> -->
-
         </div>
         <div id="div_id_r_local" class="form-group">
             <label for="id_r_local" class=" requiredField">
@@ -61,9 +56,9 @@
                 <select name="r_local" class="select form-control" required id="id_r_local">
                     <option value="0" selected>---------</option>
                     <option value="Sala">Sala</option>
-                    <option value="Quarto 01">Quarto 01</option>
-                    <option value="Quarto 02">Quarto 02</option>
-                    <option value="Quarto 03">Quarto 03</option>
+                    <option value="Quarto_01">Quarto 01</option>
+                    <option value="Quarto_02">Quarto 02</option>
+                    <option value="Quarto_03">Quarto 03</option>
                     <option value="Banheiro">Banheiro</option>
                     <option value="Cozinha">Cozinha</option>
                     <option value="Varanda">Varanda</option>
@@ -78,10 +73,10 @@
             <div class="">
                 <select name="r_type_circuit" class="select form-control" required id="id_r_type_circuit">
                     <option value="0" selected>---------</option>
-                    <option value="Iluminação">Iluminação</option>
-                    <option value="TUG's">TUG's</option>
+                    <option value="Iluminacao">Iluminação</option>
+                    <option value="TUG">TUG's</option>
                     <option value="Chuveiro">Chuveiro</option>
-                    <option value="Ar Condicionado">Ar Condicionado</option>
+                    <option value="ArCondicionado">Ar Condicionado</option>
                     <option value="Outros">Outros</option>
                 </select>
             </div>
@@ -149,7 +144,7 @@
                 <option value="B2">B2</option>
             </select>
         </div>
-            <input type="submit" class="btn btn-success" value="Criar Circuito" id="adicionar" onclick="addCircuit()">
+            <input type="submit" class="btn btn-success" value="Criar Circuito" id="alterar" onclick="updateCircuit()">
     </form>
 </div>
 <br>
