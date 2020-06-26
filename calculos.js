@@ -92,15 +92,15 @@ function searchCable(ckt){ //Encontrar seção do cabo
 
     let tipo = document.getElementById('id_r_type_circuit').value
 
-    if (cable <= 1.5 && tipo == 'Iluminação'){
+    if (cable <= 1.5 && tipo == 'Iluminacao'){
         cable = 1.5
         //console.log('result:', cable)
     }
-    else if (cable <= 1.5 && tipo != "Iluminação"){
+    else if (cable <= 1.5 && tipo != "Iluminacao"){
         cable = 2.5
         //console.log('result:', cable)
     }
-    else if (cable > 2.5 && tipo != "Iluminação"){
+    else if (cable > 2.5 && tipo != "Iluminacao"){
         cable = cable 
         //console.log('result:', cable)
     }

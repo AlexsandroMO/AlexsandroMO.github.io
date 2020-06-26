@@ -20,7 +20,7 @@ function createDbCircuit(){
 } 
 
 function addCircuit(){
-    
+
     let form = document.querySelector("#form-adiciona");
     //Ler formulário
     let ckt = obtemCKTFormulario(form);
@@ -28,13 +28,12 @@ function addCircuit(){
     //searchCable(ckt)
     let calc = calculos(ckt);
 
-    //console.log('Até Calc foi', calc)
-   
     createDbCircuit();
     addData(ckt, calc);
 
     form.reset();
 
+    
     setTimeout(function() {
         window.location.href = "index.html";
     }, 1000);
@@ -262,47 +261,47 @@ function obtemCKTFormEdit(form) {
         tensVa: form.id_r_tension.value, //TENSAO_VA
         secao: form.id_r_secao_cond.value,
         qtCKT: form.id_r_numbers_points.value, //QUANT
-        powerVA: form.id_r_power_va.value, //POTENCIA_TOTAL
+        powerVA: form.id_r_power_va.value, //POTENCIA
+        totalVA: form.id_r_total_va.value, //POTENCIA_TOTAL
+        correnteVA: form.id_r_corrente_va.value, //POTENCIA_TOTAL
         compCKT: form.id_r_circuit_length.value, //COMP_CKT
         qdTensPerm: form.id_r_volt_drop_allow.value, //QUEDA_TENSAO
         nPolos: form.id_r_numero_polos.value, //N_DE_POLOS
-        arrangCable: form.id_r_arrang_cable.value, //N_DE_POLOS
+        arrangCable: form.id_r_arrang_cable.value, //ARRANJO DE CABOS
+        corrNominal: form.id_r_corr_nom.value, //CORENTE NOMINAL
+        dj: form.id_r_dj.value, //DJ
     }
-    
 
-    document.getElementById('id_r_project').value = _id[1]
-        document.getElementById('id_r_local').value = _id[2]
-        document.getElementById('id_r_type_circuit').value = _id[3]
-        document.getElementById('id_r_tension').value = _id[4]
-        document.getElementById('id_r_numbers_points').value = _id[5]
-        document.getElementById('id_r_secao_cond').value = _id[10]
-        document.getElementById('id_r_power_va').value = _id[6]
-        document.getElementById('id_r_total_va').value = _id[8]
-        document.getElementById('id_r_corrente_va').value = _id[7]
-        document.getElementById('id_r_circuit_length').value = _id[9]
-        document.getElementById('id_r_volt_drop_allow').value = _id[11]
-        document.getElementById('id_r_numero_polos').value = _id[12]
-        document.getElementById('id_r_arrang_cable').value = _id[13]
-        document.getElementById('id_r_corr_nom').value = _id[14]
-        document.getElementById('id_r_dj').value = _id[15]
     return ckt;
 }
 
-
-function addCircuit(){
+function updateCircuit(){
 
     let form = document.querySelector("#form-edita");
 
     let ckt = obtemCKTFormulario(form);
 
-    console.log('CKT: ',ckt)
+    console.log('CKT: ==',ckt)
 
-/*     db.transaction(function(tx) {
+    db.transaction(function(tx) {
  
         tx.executeSql('UPDATE circuit SET projeto=?, local=?, tipo_ckt=?, tens_va=?, qt_ckt=?, power_va=?, carga_total=?, corr_total=?, comp_ckt=?, secao_condutor=?, qd_tens_perm=?, n_polos=?, arrang_cable=?, corr_nom=?, dj=?', [nome,idade,cep,cidade,estado,bairro,rua,numero,mail,pass,id],null);
     });
- */
-    
+
+
+    projeto,local,tipoCKT,tensVa,secao
+        qtCKT
+        powerVA
+        totalVA
+        correnteVA
+        compCKT
+        qdTensPerm
+        nPolos
+        arrangCable
+        corrNominal
+        dj
+
+
 
 }
 
