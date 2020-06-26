@@ -22,49 +22,46 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto" id="alinha-nav">
             <li class="nav-item">
-                <a class="nav-link" href="index.html" id="click-out" target="_blank">Home</a>
+                <a class="nav-link" href="index.html" id="click-out">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="create-project.html" target="_blank">Projetos</a>
-            </li>
-            <li class="nav-item">
+<!--             <li class="nav-item">
                 <a class="nav-link" href="#">Calculadora CKT</a>
+            </li> -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Projetos Em andamento</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="home-ckt.html">Projeto Dimencionamento de Circuitos</a>
+                    <a class="dropdown-item" href="Analise_Textos.html">Analise de Dados</a>
+                </div>
+    
             </li>
-        <form method="GET" id="search-form">
-            <span><input class="form-control" type="search" id="search" name="search" placeholder="Localizar Circuito" value="">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-btn" onclick="funcao_alerta()" value="Exibir Alert">Pesquisar</button></span>
-        </form>
+
     </ul>
   </div>
 </nav>
 
-    <div id="alinha-bt-create">
-        <a href="create-project.html"><button type="button" class="btn btn-secondary">Criar Projeto</button></a>
+    <div class="row">
+        <h3>Portal de Desenvolvimento</h3>
+        <div id="alinha-img">
+            <span>
+                <img src="Prog1.png" alt="some text">
+                <img src="Prog2.png" alt="some text">
+            </span>
+        </div>
     </div>
+
     
-<div class="row">
-    <h3>Lista de Projetos</h3>
-</div>
-
-
-<div class="col-sm-5">
-    <div id="ajusta-tabela-proj"></div>
-</div>
-
-<div class="container-fluid">
-    <iframe src="footer.html"></iframe>
-</div>
 
 </body>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- <script src="bootstrap.min.css"></script> -->
-    <script src="scripts.js"></script>
-    <script src="db_proj.js"></script>
-    <script src="db_circuit.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- <script src="bootstrap.min.css"></script> -->
+<script src="scripts.js"></script>
+<script src="db_proj.js"></script>
+<script src="db_circuit.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </html>

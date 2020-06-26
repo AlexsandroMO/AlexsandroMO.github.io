@@ -34,7 +34,7 @@ function calculos(ckt){
         }
     }
   
-    //evitar não entrar na tabela por ser menor que 9A
+    //evitar não entrar na tabela por ser menor que 9A __
     let ct = ((ckt.qtCKT * ckt.powerVA) / ckt.tensVa)
     if (ct < 10){
         ct = 10
