@@ -35,8 +35,8 @@ function addCircuit(){
 
     
     setTimeout(function() {
-        window.location.href = "index.html";
-    }, 1000);
+        window.location.href = "home-ckt.html";
+    }, 10);
 
 }
 
@@ -242,7 +242,7 @@ function chamaEditCKT(id_proj){
                 setTimeout(function() {
 
                     window.location.href = `edit-ckt.html?${id_projeto}?${id_local}?${id_tipo}?${id_tens}?${id_qt}?${id_power}?${id_carga}?${id_corr_total}?${id_comp}?${id_secao}?${id_perm}?${id_polos}?${id_arrang_calbe}?${id_corr_nom}?${id_dj}`
-                    }, 1000);
+                    }, 10);
 
             }, null);
 
@@ -300,8 +300,6 @@ function updateCircuit(){
         arrangCable
         corrNominal
         dj
-
-
 
 }
 
