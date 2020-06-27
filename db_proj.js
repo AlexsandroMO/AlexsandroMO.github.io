@@ -25,7 +25,7 @@ function addProj(){
 
     setTimeout(function() {
         window.location.href = "home-ckt.html";
-    }, 500);
+    }, 1000);
 }
 
 function obtemProjFormulario(form) {
@@ -103,7 +103,7 @@ function chamaCircuitId(id_proj){//
 
     setTimeout(function() {
         window.location.href = "lista-circuitos.html?"+id_proj;
-    }, 10);
+    }, 1000);
 
     console.log(id_proj)
 

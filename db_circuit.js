@@ -36,7 +36,7 @@ function addCircuit(){
     
     setTimeout(function() {
         window.location.href = "home-ckt.html";
-    }, 10);
+    }, 1000);
 
 }
 
@@ -62,9 +62,7 @@ function addData(ckt, calc){
 
     db.transaction(function(tx) {
         tx.executeSql('INSERT INTO circuit (projeto, local, tipo_ckt, tens_va, qt_ckt, power_va, carga_total, corr_total, comp_ckt, secao_condutor, qd_tens_perm, n_polos, arrang_cable, corr_nom, dj) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [ckt.projeto, ckt.local, ckt.tipoCKT, ckt.tensVa, ckt.qtCKT, Math.round(ckt.powerVA), Math.round(calc.cargaTotal), Math.round(calc.corrTotal), ckt.compCKT, calc.secaoCondutor, ckt.qdTensPerm, ckt.nPolos, ckt.arrangCable, Math.round(calc.corrNom), calc.dj]);
-
     });
-
 }
 
 //==================================
@@ -148,7 +146,7 @@ function readDB(){
         let corpo = document.createElement('tbody');
     
         db.transaction(function (tx){
-        tx.executeSql('SELECT * FROM circuit where projeto = ?', [id_proj], function (tx, resultado){
+            tx.executeSql('SELECT * FROM circuit where projeto = ?', [id_proj], function (tx, resultado){
             let rows = resultado.rows
 
             let tr = ''
@@ -199,7 +197,7 @@ function chamaEditCKT(id_proj){
     console.log('>>: ', id_proj)
 
     db.transaction(function (tx){
-        tx.executeSql('SELECT * FROM circuit where id = ?', [id_proj], function (tx, resultado){
+        tx.executeSql('SELECT * FROM circuit WHERE id = ?', [id_proj], function (tx, resultado){
             let rows = resultado.rows
             let id_projeto;
             let id_local;
@@ -208,7 +206,7 @@ function chamaEditCKT(id_proj){
             let id_qt;
             let id_power;
             let id_carga;
-            let id_corr;
+            let id_corr_total;
             let id_comp;
             let id_secao;
             let id_perm;
@@ -235,74 +233,70 @@ function chamaEditCKT(id_proj){
                     id_arrang_calbe = rows[i].arrang_cable
                     id_corr_nom = rows[i].corr_nom
                     id_dj = rows[i].dj
+                    id_id = rows[i].id
                 }
 
-                console.log('ID_PROJ: ',id_projeto)
-
                 setTimeout(function() {
+                    window.location.href = `edit-ckt.html?${id_projeto}?${id_local}?${id_tipo}?${id_tens}?${id_qt}?${id_power}?${id_comp}?${id_perm}?${id_polos}?${id_arrang_calbe}?${id_id}`
+                }, 1000);
 
-                    window.location.href = `edit-ckt.html?${id_projeto}?${id_local}?${id_tipo}?${id_tens}?${id_qt}?${id_power}?${id_carga}?${id_corr_total}?${id_comp}?${id_secao}?${id_perm}?${id_polos}?${id_arrang_calbe}?${id_corr_nom}?${id_dj}`
-                    }, 10);
-
+                /* setTimeout(function() {
+                    window.location.href = `edit-ckt.html?${id_projeto}?${id_local}?${id_tipo}?${id_tens}?${id_qt}?${id_power}?${id_carga}?${id_corr_total}?${id_comp}?${id_secao}?${id_perm}?${id_polos}?${id_arrang_calbe}?${id_corr_nom}?${id_dj}?${id_id}`
+                }, 1000); */
             }, null);
-
         });
-
 }
 
-//colocar o resto dos forms  <<<<<<<<<<<<<<<<<<<<<<<<<<
-
 function obtemCKTFormEdit(form) {
-
+    
     var ckt = {
         projeto: form.id_r_project.value, //PROJETO
         local: form.id_r_local.value, //LOCAL
         tipoCKT: form.id_r_type_circuit.value, //TIPO
         tensVa: form.id_r_tension.value, //TENSAO_VA
-        secao: form.id_r_secao_cond.value,
         qtCKT: form.id_r_numbers_points.value, //QUANT
         powerVA: form.id_r_power_va.value, //POTENCIA
-        totalVA: form.id_r_total_va.value, //POTENCIA_TOTAL
-        correnteVA: form.id_r_corrente_va.value, //POTENCIA_TOTAL
+        //totalVA: form.id_r_total_va.value, //POTENCIA_TOTAL
+        //correnteVA: form.id_r_corrente_va.value, //POTENCIA_TOTAL
         compCKT: form.id_r_circuit_length.value, //COMP_CKT
+        //secao: form.id_r_secao_cond.value, //SECAO
         qdTensPerm: form.id_r_volt_drop_allow.value, //QUEDA_TENSAO
         nPolos: form.id_r_numero_polos.value, //N_DE_POLOS
         arrangCable: form.id_r_arrang_cable.value, //ARRANJO DE CABOS
-        corrNominal: form.id_r_corr_nom.value, //CORENTE NOMINAL
-        dj: form.id_r_dj.value, //DJ
+        //corrNominal: form.id_r_corr_nom.value, //CORENTE NOMINAL
+        //dj: form.id_r_dj.value, //DJ
+        
     }
-
+    
     return ckt;
 }
 
 function updateCircuit(){
+    
+    let url = window.location.href
+    let _id = url.split("?"); // id=10&name=gustavo
 
     let form = document.querySelector("#form-edita");
+    let ckt = obtemCKTFormEdit(form);
+    let calc = calculos(ckt);
 
-    let ckt = obtemCKTFormulario(form);
+    console.log('>>>11: ', _id[11])
 
-    console.log('CKT: ==',ckt)
 
     db.transaction(function(tx) {
- 
-        tx.executeSql('UPDATE circuit SET projeto=?, local=?, tipo_ckt=?, tens_va=?, qt_ckt=?, power_va=?, carga_total=?, corr_total=?, comp_ckt=?, secao_condutor=?, qd_tens_perm=?, n_polos=?, arrang_cable=?, corr_nom=?, dj=?', [nome,idade,cep,cidade,estado,bairro,rua,numero,mail,pass,id],null);
+
+        tx.executeSql('UPDATE circuit SET projeto=?, local=?, tipo_ckt=?, tens_va=?, qt_ckt=?, power_va=?, carga_total=?, corr_total=?, comp_ckt=?, secao_condutor=?, qd_tens_perm=?, n_polos=?, arrang_cable=?,corr_nom=?, dj=?WHERE id=?', [ckt.projeto,ckt.local,ckt.tipoCKT,parseInt(ckt.tensVa),parseInt(ckt.qtCKT),parseInt(ckt.powerVA),Math.round(calc.cargaTotal), Math.round(calc.corrTotal),parseInt(ckt.compCKT),calc.secaoCondutor,parseInt(ckt.qdTensPerm),parseInt(ckt.nPolos),ckt.arrangCable,Math.round(calc.corrNom),calc.dj,parseInt(_id[11])],null);
+
+       /*  [ckt.projeto,ckt.local,ckt.tipoCKT,parseInt(ckt.tensVa),parseInt(ckt.qtCKT),parseInt(ckt.powerVA),parseInt(ckt.totalVA),parseInt(ckt.correnteVA),parseInt(ckt.compCKT),parseInt(ckt.secao),parseInt(ckt.qdTensPerm),parseInt(ckt.nPolos),ckt.arrangCable,parseInt(ckt.corrNominal),ckt.dj,parseInt(_id[16])],null); */
+
     });
 
+    form.reset();
 
-    projeto,local,tipoCKT,tensVa,secao
-        qtCKT
-        powerVA
-        totalVA
-        correnteVA
-        compCKT
-        qdTensPerm
-        nPolos
-        arrangCable
-        corrNominal
-        dj
-
+    setTimeout(function() {
+        window.location.href = "home-ckt.html";
+    }, 1000);
 }
-
 
 function deletaId(id){
     console.log('eita foi!!!: ', id)

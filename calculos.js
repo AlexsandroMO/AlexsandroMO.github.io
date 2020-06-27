@@ -24,15 +24,22 @@ function calculos(ckt){
 
     for (i=0;i<lista_DJ.length;i++){
         console.log('>>>>>>>>> lista DJ', lista_DJ[i], corr_nom[0])
-        if (lista_DJ[i] < 12){
+
+        if (lista_DJ[i] > corr_nom[0]){
+            DJ.push(lista_DJ[i]) //encontrar DJ
+            console.log('entrou lista DJ >', lista_DJ[i], corr_nom[0])
+        }
+
+/*         if (lista_DJ[i] < 12){
             DJ.push(10) //encontrar DJ
             console.log('entrou lista DJ <', lista_DJ[i], corr_nom[0])
         }
         else if (lista_DJ[i] > corr_nom[0]){
             DJ.push(lista_DJ[i]) //encontrar DJ
             console.log('entrou lista DJ >', lista_DJ[i], corr_nom[0])
-        }
+        } */
     }
+    console.log('>>>>DJ>>>>>', DJ)
   
     //evitar não entrar na tabela por ser menor que 9A __
     let ct = ((ckt.qtCKT * ckt.powerVA) / ckt.tensVa)
@@ -48,8 +55,8 @@ function calculos(ckt){
         corrNom : Math.round(corr_nom[0]),
         dj : DJ[0]
     }
-
-    return list_calc;
+  
+    return list_calc;  
 }
 
 function searchCable(ckt){ //Encontrar seção do cabo
