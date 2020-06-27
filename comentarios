@@ -4,7 +4,7 @@ git clone <nome>
 git add .
 git commit -m "texto"
 git push
-git pull
+git pull #pegar do github
 '''
 
 '''git checkout -b nome cria uma branch
