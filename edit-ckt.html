@@ -147,7 +147,7 @@
             </select>
         </div>
 
-            <input type="submit" class="btn btn-success" value="Criar Circuito" id="adicionar" onclick="updateCircuit()">
+            <input type="submit" class="btn btn-success" value="Editar Circuito" id="adicionar" onclick="updateCircuit()">
     </form>
 </div>
 <br>
@@ -176,17 +176,6 @@
         let _id = url.split("?"); // id=10&name=gustavo
 
         console.log('dentro da function',_id)
-        console.log('1',_id[1])
-        console.log('2',_id[2])
-        console.log('3',_id[3])
-        console.log('4',_id[4])
-        console.log('5',_id[5])
-        console.log('6',_id[6])
-        console.log('7',_id[7])
-        console.log('8',_id[8])
-        console.log('9',_id[9])
-        console.log('10',_id[10])
-        console.log('11',_id[11])
 
         document.getElementById('id_r_project').value = _id[1]
         document.getElementById('id_r_local').value = _id[2]

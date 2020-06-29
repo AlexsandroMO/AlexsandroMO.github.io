@@ -35,3 +35,23 @@ corr_nom        : CORRENTE NOMINAL                              >>      Disjunto
 arrangCable     : ARRANJO DE CABOS                              >> conforme tabela 36 NBR-5410
 dj              : DJ Usual	                                    >>      Disjuntor aplicável
 
+
+
+
+Atividades:
+
+- Corrigir Disjuntor
+- Queda de tensão automática
+
+
+
+Editar "Criar Projetos"
+Deletar Projetos
+Editar CKTs
+Criar Calculadora CKT
+
+Inovações:
+- Duplicar CKTs
+- Levar Comprimento em consideração
+
+
