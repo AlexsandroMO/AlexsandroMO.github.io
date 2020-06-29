@@ -282,7 +282,6 @@ function updateCircuit(){
 
     console.log('>>>11: ', _id[11])
 
-
     db.transaction(function(tx) {
 
         tx.executeSql('UPDATE circuit SET projeto=?, local=?, tipo_ckt=?, tens_va=?, qt_ckt=?, power_va=?, carga_total=?, corr_total=?, comp_ckt=?, secao_condutor=?, qd_tens_perm=?, n_polos=?, arrang_cable=?,corr_nom=?, dj=?WHERE id=?', [ckt.projeto,ckt.local,ckt.tipoCKT,parseInt(ckt.tensVa),parseInt(ckt.qtCKT),parseInt(ckt.powerVA),Math.round(calc.cargaTotal), Math.round(calc.corrTotal),parseInt(ckt.compCKT),calc.secaoCondutor,parseInt(ckt.qdTensPerm),parseInt(ckt.nPolos),ckt.arrangCable,Math.round(calc.corrNom),calc.dj,parseInt(_id[11])],null);
@@ -290,6 +289,8 @@ function updateCircuit(){
        /*  [ckt.projeto,ckt.local,ckt.tipoCKT,parseInt(ckt.tensVa),parseInt(ckt.qtCKT),parseInt(ckt.powerVA),parseInt(ckt.totalVA),parseInt(ckt.correnteVA),parseInt(ckt.compCKT),parseInt(ckt.secao),parseInt(ckt.qdTensPerm),parseInt(ckt.nPolos),ckt.arrangCable,parseInt(ckt.corrNominal),ckt.dj,parseInt(_id[16])],null); */
 
     });
+
+    //alert('')
 
     form.reset();
 
