@@ -1,18 +1,17 @@
 
 function calculos(ckt){
-
+    
     let bitola = searchCable(ckt);
     let corr_nom = []
     let DJ = []
 
     //Problemas aqui <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     for (i=0;i<corrente_nominal.length;i++){
-        console.log('geral : ', corrente_nominal[i].secao, bitola)
+        //console.log('geral : ', corrente_nominal[i].secao, bitola)
         if (corrente_nominal[i].secao >= bitola){
-            console.log('entrou na corrente:', corrente_nominal[i].secao, bitola)
+            //console.log('entrou na corrente:', corrente_nominal[i].secao, bitola)
             corr_nom.push(corrente_nominal[i].capacidade_cond) //encontrar corrente nominal
         }
-
     }
    
     //evitar não entrar na tabela por ser menor que 9A
@@ -20,14 +19,14 @@ function calculos(ckt){
         corr_nom.push(10)
     }
     //---------------
-    console.log('>>corrente: ', corr_nom[0])
+    //console.log('>>corrente: ', corr_nom[0])
 
     for (i=0;i<lista_DJ.length;i++){
         //console.log('>>>>>>>>> lista DJ', lista_DJ[i], corr_nom[0])
 
         if (lista_DJ[i] > corr_nom[0]){
             DJ.push(lista_DJ[i]) //encontrar DJ
-            console.log('entrou lista DJ >', lista_DJ[i], corr_nom[0], DJ)
+            //console.log('entrou lista DJ >', lista_DJ[i], corr_nom[0], DJ)
         }
     }
 
@@ -43,8 +42,27 @@ function calculos(ckt){
         corr_nom = [10]
     }
 
-    console.log('final <', DJ[0], corr_nom[0])
-    console.log('>>>>DJ>>>>>', DJ, corr_nom[0], lista_DJ)
+    let tipo = document.getElementById('id_r_type_circuit').value
+    let queda;
+
+    //-------------------------------
+    if (tipo == 'Iluminacao'){
+        queda = 1//encontrar DJ
+        console.log('Entrou iluminação')
+
+    }else if(tipo != 'Iluminacao' && corr_nom < 40){
+        console.log('Entrou no corrente menor')
+        queda = 2
+    }else{
+        console.log('Entrou no corrente Maior')
+        queda = 3
+    }
+    //-------------------------------
+
+    console.log('final <', DJ[0], corr_nom[0], tipo, queda)
+    //console.log('>>>>DJ>>>>>', DJ, corr_nom[0], lista_DJ)
+
+    alert('')
     
     //---------------
 
@@ -52,6 +70,7 @@ function calculos(ckt){
         cargaTotal: (ckt.qtCKT * ckt.powerVA),
         corrTotal: ct,
         secaoCondutor: bitola,
+        qdTensPerm: queda,
         corrNom : Math.round(corr_nom[0]),
         dj : DJ[0]
     }
@@ -59,13 +78,14 @@ function calculos(ckt){
     return list_calc;  
 }
 
+
 function searchCable(ckt){ //Encontrar seção do cabo
 
     let corr_total = Math.round(((ckt.qtCKT * ckt.powerVA) / ckt.tensVa))
     if (corr_total < 10){
         corr_total = 10
     }
-
+    
     tabela36 = `${ckt.arrangCable}_${ckt.nPolos}`
 
     let table_calbe;
@@ -87,6 +107,7 @@ function searchCable(ckt){ //Encontrar seção do cabo
         console.log('Ops')
     }
     
+
     let new_cable = []
 
     for (i=0;i<table_calbe.length;i++){
@@ -96,7 +117,6 @@ function searchCable(ckt){ //Encontrar seção do cabo
     }
 
     let cable = new_cable[new_cable.length - 1]
-
     let tipo = document.getElementById('id_r_type_circuit').value
 
     if (cable <= 1.5 && tipo == 'Iluminacao'){

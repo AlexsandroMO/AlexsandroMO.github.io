@@ -26,6 +26,7 @@ function addCircuit(){
     let ckt = obtemCKTFormulario(form);
 
     //searchCable(ckt)
+    
     let calc = calculos(ckt);
 
     createDbCircuit();
@@ -33,10 +34,9 @@ function addCircuit(){
 
     form.reset();
 
-    
     setTimeout(function() {
         window.location.href = "home-ckt.html";
-    }, 1000);
+    }, 1000); 
 
 }
 
@@ -50,18 +50,18 @@ function obtemCKTFormulario(form) {
         qtCKT: form.r_numbers_points.value, //QUANT
         powerVA: form.id_r_power_va.value, //POTENCIA_TOTAL
         compCKT: form.id_r_circuit_length.value, //COMP_CKT
-        qdTensPerm: form.id_r_volt_drop_allow.value, //QUEDA_TENSAO
+        //qdTensPerm: form.id_r_volt_drop_allow.value, //QUEDA_TENSAO
         nPolos: form.id_r_numero_polos.value, //N_DE_POLOS
         arrangCable: form.id_r_arrang_cable.value, //N_DE_POLOS
     }
-    console.log(ckt)
+    console.log('==========',ckt)
     return ckt;
 }
 
 function addData(ckt, calc){
 
     db.transaction(function(tx) {
-        tx.executeSql('INSERT INTO circuit (projeto, local, tipo_ckt, tens_va, qt_ckt, power_va, carga_total, corr_total, comp_ckt, secao_condutor, qd_tens_perm, n_polos, arrang_cable, corr_nom, dj) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [ckt.projeto, ckt.local, ckt.tipoCKT, ckt.tensVa, ckt.qtCKT, Math.round(ckt.powerVA), Math.round(calc.cargaTotal), Math.round(calc.corrTotal), ckt.compCKT, calc.secaoCondutor, ckt.qdTensPerm, ckt.nPolos, ckt.arrangCable, Math.round(calc.corrNom), calc.dj]);
+        tx.executeSql('INSERT INTO circuit (projeto, local, tipo_ckt, tens_va, qt_ckt, power_va, carga_total, corr_total, comp_ckt, secao_condutor, qd_tens_perm, n_polos, arrang_cable, corr_nom, dj) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [ckt.projeto, ckt.local, ckt.tipoCKT, ckt.tensVa, ckt.qtCKT, Math.round(ckt.powerVA), Math.round(calc.cargaTotal), Math.round(calc.corrTotal), ckt.compCKT, calc.secaoCondutor, calc.qdTensPerm, ckt.nPolos, ckt.arrangCable, Math.round(calc.corrNom), calc.dj]);
     });
 }
 
@@ -237,8 +237,13 @@ function chamaEditCKT(id_proj){
                 }
 
                 setTimeout(function() {
-                    window.location.href = `edit-ckt.html?${id_projeto}?${id_local}?${id_tipo}?${id_tens}?${id_qt}?${id_power}?${id_comp}?${id_perm}?${id_polos}?${id_arrang_calbe}?${id_id}`
+                    window.location.href = `edit-ckt.html?${id_projeto}?${id_local}?${id_tipo}?${id_tens}?${id_qt}?${id_power}?${id_comp}?${id_polos}?${id_arrang_calbe}?${id_id}`
                 }, 1000);
+
+                // setTimeout(function() {
+                //     window.location.href = `edit-ckt.html?${id_projeto}?${id_local}?${id_tipo}?${id_tens}?${id_qt}?${id_power}?${id_comp}?${id_perm}?${id_polos}?${id_arrang_calbe}?${id_id}`
+                // }, 1000);
+                
 
                 /* setTimeout(function() {
                     window.location.href = `edit-ckt.html?${id_projeto}?${id_local}?${id_tipo}?${id_tens}?${id_qt}?${id_power}?${id_carga}?${id_corr_total}?${id_comp}?${id_secao}?${id_perm}?${id_polos}?${id_arrang_calbe}?${id_corr_nom}?${id_dj}?${id_id}`
@@ -260,7 +265,7 @@ function obtemCKTFormEdit(form) {
         //correnteVA: form.id_r_corrente_va.value, //POTENCIA_TOTAL
         compCKT: form.id_r_circuit_length.value, //COMP_CKT
         //secao: form.id_r_secao_cond.value, //SECAO
-        qdTensPerm: form.id_r_volt_drop_allow.value, //QUEDA_TENSAO
+        //qdTensPerm: form.id_r_volt_drop_allow.value, //QUEDA_TENSAO
         nPolos: form.id_r_numero_polos.value, //N_DE_POLOS
         arrangCable: form.id_r_arrang_cable.value, //ARRANJO DE CABOS
         //corrNominal: form.id_r_corr_nom.value, //CORENTE NOMINAL
@@ -284,13 +289,11 @@ function updateCircuit(){
 
     db.transaction(function(tx) {
 
-        tx.executeSql('UPDATE circuit SET projeto=?, local=?, tipo_ckt=?, tens_va=?, qt_ckt=?, power_va=?, carga_total=?, corr_total=?, comp_ckt=?, secao_condutor=?, qd_tens_perm=?, n_polos=?, arrang_cable=?,corr_nom=?, dj=?WHERE id=?', [ckt.projeto,ckt.local,ckt.tipoCKT,parseInt(ckt.tensVa),parseInt(ckt.qtCKT),parseInt(ckt.powerVA),Math.round(calc.cargaTotal), Math.round(calc.corrTotal),parseInt(ckt.compCKT),calc.secaoCondutor,parseInt(ckt.qdTensPerm),parseInt(ckt.nPolos),ckt.arrangCable,Math.round(calc.corrNom),calc.dj,parseInt(_id[11])],null);
+        tx.executeSql('UPDATE circuit SET projeto=?, local=?, tipo_ckt=?, tens_va=?, qt_ckt=?, power_va=?, carga_total=?, corr_total=?, comp_ckt=?, secao_condutor=?, qd_tens_perm=?, n_polos=?, arrang_cable=?,corr_nom=?, dj=?WHERE id=?', [ckt.projeto,ckt.local,ckt.tipoCKT,parseInt(ckt.tensVa),parseInt(ckt.qtCKT),parseInt(ckt.powerVA),Math.round(calc.cargaTotal), Math.round(calc.corrTotal),parseInt(ckt.compCKT),calc.secaoCondutor,parseInt(calc.qdTensPerm),parseInt(ckt.nPolos),ckt.arrangCable,Math.round(calc.corrNom),calc.dj,parseInt(_id[10])],null);
 
        /*  [ckt.projeto,ckt.local,ckt.tipoCKT,parseInt(ckt.tensVa),parseInt(ckt.qtCKT),parseInt(ckt.powerVA),parseInt(ckt.totalVA),parseInt(ckt.correnteVA),parseInt(ckt.compCKT),parseInt(ckt.secao),parseInt(ckt.qdTensPerm),parseInt(ckt.nPolos),ckt.arrangCable,parseInt(ckt.corrNominal),ckt.dj,parseInt(_id[16])],null); */
 
     });
-
-    //alert('')
 
     form.reset();
 
