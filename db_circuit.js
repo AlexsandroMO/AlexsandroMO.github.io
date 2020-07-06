@@ -99,7 +99,6 @@ function readDB(){
 
     let id_proj;
 
-
     db.transaction(function (tx){
         tx.executeSql('SELECT name_proj FROM cria_proj where id=?', [_id], function (tx, resultado){
         let rows = resultado.rows
@@ -304,8 +303,24 @@ function updateCircuit(){
 
 function deletaId(id){
     console.log('eita foi!!!: ', id)
+
+
 }
 
+
+/* function deletar(){
+    
+    var id = document.getElementById('field-id').value;
+    
+    db.transaction(function(tx) {
+        tx.executeSql("DELETE FROM myTable WHERE id=?", [id]);
+    });
+    
+    mostrar();
+    limpaCampo();
+    inputSHOW(false);
+}
+ */
 
 
 

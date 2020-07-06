@@ -82,9 +82,9 @@ function readProjDB(){
 
         for (let i=0;i<rows.length;i++){
             tr += '<tr>';
-            tr += '<td onclick="chamaCircuitId('+ rows[i].id  +')"><i class="fas fa-angle-double-right"></td>';
+            tr += '<td onclick="chamaProjectId('+ rows[i].id  +')"><i class="fas fa-angle-double-right"></td>';
             tr += '<td>' + rows[i].name_proj + ' </td>';
-            tr += '<td onclick="chamaId()"><i class="fas fa-edit"></td>';
+            tr += '<td onclick="chamaEditProj('+ rows[i].id  +')"><i class="fas fa-edit"></td>';
             tr += '<td onclick="deletaId('+ rows[i].id  +')"><i class="fas fa-trash"></td>';
             tr += '</tr>'; 
         }
@@ -98,29 +98,61 @@ function readProjDB(){
   
   }
 
+function chamaEditProj(id_proj){
 
-function chamaCircuitId(id_proj){//
+    db.transaction(function (tx){
+        tx.executeSql('SELECT * FROM cria_proj', [], function (tx, resultado){
+        let rows = resultado.rows
+
+        console.log(':::::',rows)
+
+        let id_projeto;
+        let id_coment;
+
+        for (let i=0;i<rows.length;i++){
+            console.log('funcioanndo: ', rows[i].id)
+
+            id_projeto = rows[i].name_proj
+            id_coment = rows[i].coment
+            id_id = rows[i].id
+
+            console.log('>>>>>',id_projeto)
+
+            setTimeout(function() {
+                window.location.href = `edit-project.html?${id_projeto}?${id_coment}?${id_id}`
+            }, 1000);
+
+        }
+
+        }, null);
+    });
+
+}
+
+documento.getElementById('bt-click').addEventListener("click", updateProjId);
+
+function updateProjId(){
+    console.log('>>> eita')
+    id_proj = 2
+
+    //console.log('>>: ', id_proj)
+    let form = document.querySelector("#form-edita-proj");
+    let proj = obtemProjFormulario(form);
+
+    console.log('>>>', proj)
+    alert('')
+
+    db.transaction(function(tx) {
+
+        tx.executeSql('UPDATE cria_proj SET name_proj=?, coment=? WHERE id=?', [proj.projeto,proj.coment, id_proj],null);
+
+    });
+
+    /* form.reset();
 
     setTimeout(function() {
-        window.location.href = "lista-circuitos.html?"+id_proj;
-    }, 1000);
+        window.location.href = "home-ckt.html";
+    }, 1000); */
 
-    console.log(id_proj)
-
-    // var tabela = document.createElement('table')
-    // var corpo = document.createElement('tbody')
-
-    // cabecalho = chamaThead();
-
-    // tabela.classList.add('table')
-
-    // tabela.appendChild(cabecalho);
-
-    //tabela.appendChild(montaBodyCKT(id_proj));
-  
-    //document.getElementById('ajusta-tabela').appendChild(tabela);
-
-
-    
 }
 
