@@ -31,7 +31,8 @@ function addProj(){
 function obtemProjFormulario(form) {
 
     let proj = {
-        projeto: form.id_r_create_project.value, //nome do projeto
+        //projeto: form.id_r_create_project.value, //nome do projeto
+        projeto: form.id_r_project.value, //nome do projeto
         coment: form.id_r_coment.value, //Comentários
     }
 
@@ -134,15 +135,15 @@ function chamaEditProj(id_proj){
 
 //documento.getElementById('bt-click').addEventListener("click", updateProjId);
 
-function updateProjId(){
+function updateProjId(id_proj){
+    //alert('eita')
     console.log('>>> eita')
-    id_proj = 2
 
-    //console.log('>>: ', id_proj)
+    console.log('>>: ', id_proj)
     let form = document.querySelector("#form-edita-proj");
     let proj = obtemProjFormulario(form);
 
-    console.log('>>>', proj)
+    //alert('!---')
 
     db.transaction(function(tx) {
 
@@ -150,11 +151,11 @@ function updateProjId(){
 
     });
 
-    /* form.reset();
+     form.reset();
 
     setTimeout(function() {
         window.location.href = "home-ckt.html";
-    }, 1000); */
+    }, 1000);
 
 }
 

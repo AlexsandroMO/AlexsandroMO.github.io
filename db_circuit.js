@@ -303,8 +303,6 @@ function updateCircuit(){
 
 function deletaId(id){
     console.log('eita foi!!!: ', id)
-
-
 }
 
 

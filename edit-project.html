@@ -74,19 +74,21 @@
 
     <script>
         let url = window.location.href
-        let _id = url.split("?"); // id=10&name=gustavo
+        let _id = url.split("?");
 
-        //coment = _id[2].split('%20')
-        let coment = ['aaa','bbb']
-        
         document.getElementById('id_r_project').value = _id[1]
-        
-        for (i=0;i<coment.length;i++){
-            document.getElementById('id_r_coment').value += coment[i] + ' '
+
+        let quebra = _id[2].split("%20");
+        let coment = '';
+
+        for (i=0;i<quebra.length;i++){
+            coment += quebra[i] + ' '
         }
-        
+        document.getElementById('id_r_coment').value += coment
+
         let bt = document.getElementById('adicionar-proj')
-        bt.innerHTML = '<input type="submit" class="btn btn-success" value="Editar Projeto" id="bt-click" onclick="updateProjId()">'
+
+        bt.innerHTML = '<input type="submit" class="btn btn-success" value="Editar Projeto" id="bt-click" onclick="updateProjId(' + _id[_id.length-1] +')">'
 
     </script>
 
@@ -97,6 +99,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="scripts.js"></script>
     <script src="db_circuit.js"></script>
+    <script src="db_proj.js"></script>
     <script src="calculos.js"></script>
     <script src="table36_cable.js"></script>
 
