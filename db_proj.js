@@ -168,10 +168,6 @@ function deletaIdProj(id){
         tx.executeSql('SELECT name_proj FROM cria_proj WHERE id=?', [id], function (tx, resultado){
         let rows = resultado.rows
 
-        console.log(':::::',rows)
-
-        
-
         for(i=0;i<rows.length;i++){
             console.log('====',rows[i].name_proj)
             id_projeto = rows[i].name_proj
@@ -194,14 +190,3 @@ function deletaIdProj(id){
     }, 1000);
 
 }
-
-
-
-
-/* var id = document.getElementById('field-id').value;
-  
-db.transaction(function(tx) {
-    tx.executeSql("DELETE FROM myTable WHERE id=?", [id]);
-});
-
-location.reload() */
