@@ -62,7 +62,6 @@ function calculos(ckt){
     console.log('final <', DJ[0], corr_nom[0], tipo, queda)
     //console.log('>>>>DJ>>>>>', DJ, corr_nom[0], lista_DJ)
 
-    alert('')
     
     //---------------
 

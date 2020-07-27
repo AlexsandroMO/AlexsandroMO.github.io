@@ -143,7 +143,6 @@ function updateProjId(){
     let proj = obtemProjFormulario(form);
 
     console.log('>>>', proj)
-    alert('')
 
     db.transaction(function(tx) {
 
