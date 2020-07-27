@@ -302,7 +302,15 @@ function updateCircuit(){
 }
 
 function deletaId(id){
-    console.log('eita foi!!!: ', id)
+    console.log('foi!!!: ', id)
+
+    db.transaction(function(tx) {
+        tx.executeSql("DELETE FROM circuit WHERE id=?", [id]);
+    });
+    
+    setTimeout(function() {
+        window.location.href = "home-ckt.html";
+    }, 1000);
 }
 
 

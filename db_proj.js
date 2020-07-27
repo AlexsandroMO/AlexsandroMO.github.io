@@ -89,7 +89,7 @@ function readProjDB(){
             
             tr += '<td>' + rows[i].name_proj + ' </td>';
             tr += '<td onclick="chamaEditProj('+ rows[i].id  +')"><i class="fas fa-edit"></td>';
-            tr += '<td onclick="deletaId('+ rows[i].id  +')"><i class="fas fa-trash"></td>';
+            tr += '<td onclick="deletaIdProj('+ rows[i].id  +')"><i class="fas fa-trash"></td>';
             tr += '</tr>'; 
         }
         corpo.innerHTML = tr
@@ -159,3 +159,49 @@ function updateProjId(id_proj){
 
 }
 
+function deletaIdProj(id){
+    console.log('eita foi!!!: ', id)
+
+    let id_projeto = '';
+
+    db.transaction(function (tx){
+        tx.executeSql('SELECT name_proj FROM cria_proj WHERE id=?', [id], function (tx, resultado){
+        let rows = resultado.rows
+
+        console.log(':::::',rows)
+
+        
+
+        for(i=0;i<rows.length;i++){
+            console.log('====',rows[i].name_proj)
+            id_projeto = rows[i].name_proj
+        }
+
+    },null);
+
+    db.transaction(function(tx) {
+        tx.executeSql("DELETE FROM circuit WHERE projeto=?", [id_projeto]);
+    });
+
+    });
+
+    db.transaction(function(tx) {
+            tx.executeSql("DELETE FROM cria_proj WHERE id=?", [id]);
+        });
+    
+    setTimeout(function() {
+        window.location.href = "home-ckt.html";
+    }, 1000);
+
+}
+
+
+
+
+/* var id = document.getElementById('field-id').value;
+  
+db.transaction(function(tx) {
+    tx.executeSql("DELETE FROM myTable WHERE id=?", [id]);
+});
+
+location.reload() */

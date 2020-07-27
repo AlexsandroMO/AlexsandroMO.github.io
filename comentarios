@@ -40,17 +40,16 @@ Atividades:
 
 - Corrigir Disjuntor = OK
 - Queda de tensão automática = ok
-- Deletar CKTs
+- Deletar CKTs = ok
 
-- Editar "Projetos"
-- Deletar Projetos
+- Editar "Projetos" = ok
+- Deletar Projetos = ok
+
+- Deletar Todos os ckts qd deletar um projeto = ok
 
 - Cria explicação ao proximar o mouse sobre NBR-5410
 
-
 Criar Calculadora CKT
-
-
 
 Inovações:
 - Duplicar CKTs
