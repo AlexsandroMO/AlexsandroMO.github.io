@@ -95,7 +95,7 @@ function chamaThead(){
 function readDB(){
 
     let url = window.location.href
-    let _id = url.split("?")[1]; // id=10&name=gustavo
+    let _id = url.split("?")[1];
 
     let id_proj;
 

@@ -82,7 +82,10 @@ function readProjDB(){
 
         for (let i=0;i<rows.length;i++){
             tr += '<tr>';
-            tr += '<td onclick="chamaProjectId('+ rows[i].id  +')"><i class="fas fa-angle-double-right"></td>';
+            //tr += '<td onclick="chamaProjectId('+ rows[i].id  +')"><i class="fas fa-angle-double-right"></td>';
+            //tr += '<td onclick="readDB('+ rows[i].id  +')"><i class="fas fa-angle-double-right"></td>';
+            tr += '<td><a href="lista-circuitos.html?' + rows[i].id + '"><i class="fas fa-angle-double-right"></td></a>';
+            
             tr += '<td>' + rows[i].name_proj + ' </td>';
             tr += '<td onclick="chamaEditProj('+ rows[i].id  +')"><i class="fas fa-edit"></td>';
             tr += '<td onclick="deletaId('+ rows[i].id  +')"><i class="fas fa-trash"></td>';
@@ -129,7 +132,7 @@ function chamaEditProj(id_proj){
 
 }
 
-documento.getElementById('bt-click').addEventListener("click", updateProjId);
+//documento.getElementById('bt-click').addEventListener("click", updateProjId);
 
 function updateProjId(){
     console.log('>>> eita')
