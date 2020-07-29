@@ -304,13 +304,25 @@ function updateCircuit(){
 function deletaId(id){
     console.log('foi!!!: ', id)
 
-    db.transaction(function(tx) {
-        tx.executeSql("DELETE FROM circuit WHERE id=?", [id]);
-    });
-    
-    setTimeout(function() {
-        window.location.href = "home-ckt.html";
-    }, 1000);
+    let r = confirm("Você deseja realmente cancelar esse circuito?");
+
+    if (r == true){
+        x = 'OK, apagar!';
+        console.log(x)
+
+        db.transaction(function(tx) {
+            tx.executeSql("DELETE FROM circuit WHERE id=?", [id]);
+        });
+        
+        setTimeout(function() {
+            window.location.href = "home-ckt.html";
+        }, 1000);
+
+    }else{
+        x = "Ok, não apagar!";
+        console.log(x)
+    }
+  
 }
 
 

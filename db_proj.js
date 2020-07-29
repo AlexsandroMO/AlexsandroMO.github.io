@@ -178,30 +178,42 @@ function deletaIdProj(id){
     console.log('eita foi!!!: ', id)
 
     let id_projeto = '';
+    let x;
 
-    db.transaction(function (tx){
-        tx.executeSql('SELECT name_proj FROM cria_proj WHERE id=?', [id], function (tx, resultado){
-        let rows = resultado.rows
+    let r = confirm("Você deseja realmente cancelar esse projeto?");
 
-        for(i=0;i<rows.length;i++){
-            console.log('====',rows[i].name_proj)
-            id_projeto = rows[i].name_proj
-        }
+    if (r == true){
+        x = 'OK, apagar!';
+        console.log(x)
 
-    },null);
-
-    db.transaction(function(tx) {
-        tx.executeSql("DELETE FROM circuit WHERE projeto=?", [id_projeto]);
-    });
-
-    });
-
-    db.transaction(function(tx) {
-            tx.executeSql("DELETE FROM cria_proj WHERE id=?", [id]);
+        db.transaction(function (tx){
+            tx.executeSql('SELECT name_proj FROM cria_proj WHERE id=?', [id], function (tx, resultado){
+            let rows = resultado.rows
+    
+            for(i=0;i<rows.length;i++){
+                console.log('====',rows[i].name_proj)
+                id_projeto = rows[i].name_proj
+            }
+    
+        },null);
+    
+        db.transaction(function(tx) {
+            tx.executeSql("DELETE FROM circuit WHERE projeto=?", [id_projeto]);
         });
     
-    setTimeout(function() {
-        window.location.href = "home-ckt.html";
-    }, 1000);
+        });
+    
+        db.transaction(function(tx) {
+                tx.executeSql("DELETE FROM cria_proj WHERE id=?", [id]);
+            });
+        
+        setTimeout(function() {
+            window.location.href = "home-ckt.html";
+        }, 1000);
 
+    }else{
+        x = "Ok, não apagar!";
+        console.log(x)
+    }
+    
 }
