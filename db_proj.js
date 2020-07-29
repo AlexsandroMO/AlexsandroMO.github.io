@@ -136,28 +136,43 @@ function chamaEditProj(id_proj){
 //documento.getElementById('bt-click').addEventListener("click", updateProjId);
 
 function updateProjId(id_proj){
-    //alert('eita')
-    console.log('>>> eita')
 
+    console.log('>>> eita')
     console.log('>>: ', id_proj)
+
     let form = document.querySelector("#form-edita-proj");
     let proj = obtemProjFormulario(form);
+    let id_projeto = ''
 
-    //alert('!---')
+    db.transaction(function (tx){
+        tx.executeSql('SELECT name_proj FROM cria_proj WHERE id=?', [id_proj], function (tx, resultado){
+        let rows = resultado.rows
 
-    db.transaction(function(tx) {
+        for(i=0;i<rows.length;i++){
+            console.log('====>>>>>>: ',rows[i].name_proj, proj.projeto)
+            id_projeto = rows[i].name_proj
+        }
 
-        tx.executeSql('UPDATE cria_proj SET name_proj=?, coment=? WHERE id=?', [proj.projeto,proj.coment, id_proj],null);
-
+        },null);
     });
 
-     form.reset();
+    db.transaction(function(tx) {
+        tx.executeSql('UPDATE circuit SET projeto=? WHERE projeto=?', [proj.projeto,id_projeto],null);
+        console.log('=========', proj.projeto,id_projeto)
+    });
+
+    db.transaction(function(tx) {
+        tx.executeSql('UPDATE cria_proj SET name_proj=?, coment=? WHERE id=?', [proj.projeto,proj.coment, id_proj],null);
+    });
+
+    form.reset();
 
     setTimeout(function() {
         window.location.href = "home-ckt.html";
     }, 1000);
 
 }
+
 
 function deletaIdProj(id){
     console.log('eita foi!!!: ', id)
