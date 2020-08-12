@@ -1,6 +1,26 @@
 Como instalar o Git
 https://www.youtube.com/watch?v=eWZ58c_Sqm8
 
+Abre o bash
+
+digita:
+$ ssh-keygen -t rsa -b 4096 -C "sandrobass@hotmail.com"
+enter
+tenter
+enter
+digita pra testar:
+eval "$(ssh-agent -s)"
+<<Agent pid 869>> exemplo de resposta
+digita pra testar:
+ssh-add .ssh/id_rsa
+Identity added: .ssh/id_rsa (sandrobass@hotmail.com) exemplo de resposta
+Digitar:
+$ clip < .ssh/id_rsa.pub >> copiar a chave
+Digite: 
+$ ssh -T git@github.com
+Digite: yes
+
+
 
 
 
