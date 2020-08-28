@@ -9,7 +9,6 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-
     <link rel="stylesheet" href="styles.css">
 
 </head>
@@ -22,13 +21,13 @@
 <!-- Create Circtuit-->
 <div class="offset-1 col-10 list-div">
     <h3>Calculadora de Juros Compostos</h3>
-    <form id="form-edita">
+    <form id="form-juros">
         <div id="div_id_r_project" class="form-group">
             <label for="id_r_capital" class=" requiredField">
                 Capital Inicial<span class="asteriskField"></span>
             </label>
             <div class="">
-                <input type="text" name="r_capital" class="numberinput form-control" required id="id_r_capital">
+                <input type="number" name="r_capital" class="numberinput form-control" required id="id_r_capital">
             </div>
 
             <div id="div_id_r_taxa" class="form-group">
@@ -36,7 +35,7 @@
                 Taxa de Juros Aplicada<span class="asteriskField"></span>
             </label>
             <div class="">
-                <input type="text" name="r_taxa" class="numberinput form-control" required id="id_r_taxa">
+                <input type="number" name="r_taxa" class="numberinput form-control" required id="id_r_taxa">
             </div>
 
             <div id="div_id_r_tempo" class="form-group">
@@ -44,11 +43,16 @@
                 Tempo (Duração do Investimento em Meses)<span class="asteriskField"></span>
             </label>
             <div class="">
-                <input type="text" name="r_tempo" class="numberinput form-control" required id="id_r_tempo">
+                <input type="number" name="r_tempo" class="numberinput form-control" required id="id_r_tempo">
             </div>
             <br>
-            <input type="submit" class="btn btn-success" value="Calcular" id="adicionar" onclick="updateCircuit()">
+            <input type="submit" class="btn btn-success" value="Calcular" id="adicionar" onclick="Calcular()">
     </form>
+
+    <div id="test">
+        xxxx
+     </div>
+
 </div>
 <br>
 
@@ -63,7 +67,6 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="scripts.js"></script>
-    <script src="calculators.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -73,24 +76,44 @@
 
     <script>
 
-        var numero, potencia;
-        var resultado = 0;
+        function JurosFormulario(form) {
 
-        function ColetarInformacoes(){
+            let juros = {
+                capital: parseFloat(form.id_r_capital.value),
+                taxa: parseFloat(form.id_r_taxa.value),
+                tempo: parseFloat(form.id_r_tempo.value)
+            }
 
-            numero = prompt("Qual número será elevado ?");
-            numero = parseInt(numero);
+            return juros;
+        }
 
-            potencia = prompt(" Elevado á qual potência ? ");
-            potencia = parseInt(potencia);
+        function Calcular(){
 
-            ValidarInformacoes();
+            let form = document.querySelector("#form-juros");
+            let result = document.getElementById("test");
+
+            let J = JurosFormulario(form)
+
+            let M = J.capital * (Math.pow((1 + (J.taxa/100)), (J.tempo/12)))
+            let M1 = (1 + (J.taxa/100))
+            let M2 = Math.pow(M1, (J.tempo/12))
+            let M3 = J.capital * M2
+            //let Juros_final = M - J.capital
+
+            console.log(J.capital, J.taxa, J.tempo)
+            console.log(M1)
+            console.log(M2)
+            console.log(M3)
+            console.log(M)
+
+            result.innerHTML = M
+         
+
+            
 
         }
 
-        function ValidarInformacoes(){
-
-            if(numero  !== undefined || potencia !== undefined){
+/*             if(numero  !== undefined || potencia !== undefined){
                 throw new Error("Não aceitamos valores undefined...");
             }
 
@@ -100,22 +123,14 @@
 
             if(isNaN(numero) || isNaN(potencia)){
                 throw new Error("Os valores inseridos não são válidos...");
-            }
+            } */
 
-        }
+            //resultado *= numero;
 
-        function Calcular(){
 
-            ColetarInformacoes();
+        
 
-            for(var i = 0; i < potencia; i++){
-                resultado *= numero;
-            }
-
-            alert("O resultado é "+ resultado);
-        }
 
     </script>
 
 </html>
-    
