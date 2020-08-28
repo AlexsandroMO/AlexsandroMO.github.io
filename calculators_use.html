@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="x-ua-Compatible" content="ie-edge">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="index.html" id="click-out">Meus Projetos</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto" id="alinha-nav">
+                  <li class="nav-item">
+                      <a class="nav-link" href="home-ckt.html" id="click-out">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="create-project.html" >Projetos</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Calculadora CKT</a>
+                  </li>
+              <form method="GET" id="search-form">
+                  <span><input class="form-control" type="search" id="search" name="search" placeholder="Localizar Circuito" value="">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-btn" onclick="funcao_alerta()" value="Exibir Alert">Pesquisar</button></span>
+              </form>
+          </ul>
+        </div>
+      </nav>
+<!-- Create Circtuit-->
+<div class="offset-1 col-10 list-div">
+    <h3>Calculadora de Juros Compostos</h3>
+    <form id="form-edita">
+        <div id="div_id_r_project" class="form-group">
+            <label for="id_r_capital" class=" requiredField">
+                Capital Inicial<span class="asteriskField"></span>
+            </label>
+            <div class="">
+                <input type="text" name="r_capital" class="numberinput form-control" required id="id_r_capital">
+            </div>
+
+            <div id="div_id_r_taxa" class="form-group">
+            <label for="id_r_taxa" class=" requiredField">
+                Taxa de Juros Aplicada<span class="asteriskField"></span>
+            </label>
+            <div class="">
+                <input type="text" name="r_taxa" class="numberinput form-control" required id="id_r_taxa">
+            </div>
+
+            <div id="div_id_r_tempo" class="form-group">
+            <label for="id_r_tempo" class=" requiredField">
+                Tempo (Duração do Investimento em Meses)<span class="asteriskField"></span>
+            </label>
+            <div class="">
+                <input type="text" name="r_tempo" class="numberinput form-control" required id="id_r_tempo">
+            </div>
+            <input type="submit" class="btn btn-success" value="Editar Circuito" id="adicionar" onclick="updateCircuit()">
+    </form>
+</div>
+<br>
+
+    <div class="container-fluid">
+        <iframe src="footer.html"></iframe>
+    </div>
+
+</body>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="scripts.js"></script>
+    <script src="calculators.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+
+        var numero, potencia;
+        var resultado = 0;
+
+        function ColetarInformacoes(){
+
+            numero = prompt("Qual número será elevado ?");
+            numero = parseInt(numero);
+
+            potencia = prompt(" Elevado á qual potência ? ");
+            potencia = parseInt(potencia);
+
+            ValidarInformacoes();
+
+        }
+
+        function ValidarInformacoes(){
+
+            if(numero  !== undefined || potencia !== undefined){
+                throw new Error("Não aceitamos valores undefined...");
+            }
+
+            if(numero < 0){
+                throw new Error("Calcula somente números positivos..."); 
+            }
+
+            if(isNaN(numero) || isNaN(potencia)){
+                throw new Error("Os valores inseridos não são válidos...");
+            }
+
+        }
+
+        function Calcular(){
+
+            ColetarInformacoes();
+
+            for(var i = 0; i < potencia; i++){
+                resultado *= numero;
+            }
+
+            alert("O resultado é "+ resultado);
+        }
+
+    </script>
+
+</html>
+    
