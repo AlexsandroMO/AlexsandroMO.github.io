@@ -15,26 +15,8 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand" href="index.html" id="click-out">Meus Projetos</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto" id="alinha-nav">
-                  <li class="nav-item">
-                      <a class="nav-link" href="home-ckt.html" id="click-out">Home</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="create-project.html" >Projetos</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Calculadora CKT</a>
-                  </li>
-              <form method="GET" id="search-form">
-                  <span><input class="form-control" type="search" id="search" name="search" placeholder="Localizar Circuito" value="">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-btn" onclick="funcao_alerta()" value="Exibir Alert">Pesquisar</button></span>
-              </form>
-          </ul>
+        <a class="navbar-brand" href="index.html" id="click-out"></a>
+
         </div>
       </nav>
 <!-- Create Circtuit-->
@@ -64,13 +46,17 @@
             <div class="">
                 <input type="text" name="r_tempo" class="numberinput form-control" required id="id_r_tempo">
             </div>
-            <input type="submit" class="btn btn-success" value="Editar Circuito" id="adicionar" onclick="updateCircuit()">
+            <br>
+            <input type="submit" class="btn btn-success" value="Calcular" id="adicionar" onclick="updateCircuit()">
     </form>
 </div>
 <br>
 
     <div class="container-fluid">
-        <iframe src="footer.html"></iframe>
+        <footer>
+            <p>Calculadoras Especiais</p>  
+        </footer>
+
     </div>
 
 </body>
