@@ -350,6 +350,12 @@ ul.messages li{
     margin-right: 20px;
 }
   
+#td-td{
+    background-color:#fff;
+    margin-right: 20px;
+    border: 0px solid #ddd;
+}
+
 /**Cor quando selecionado**/
 .table tr.selecionado td{
     background-color: #CD853F;
