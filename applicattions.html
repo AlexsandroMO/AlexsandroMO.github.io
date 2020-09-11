@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3>TABUADA DE (1 à 10)</h3>
+    <p id="result"></p>
+</body>
+
+<script>
+    let result = document.getElementById("result")
+    
+    for(i=1;i<11;i++){
+        result.innerHTML += `Tabuada de ${i}<br>`
+        for(j=1;j<11;j++){
+        console.log(`${i} x ${j} = ${i * j}`)
+        result.innerHTML += `${i} x ${j} = ${i * j}<br>`
+        }
+        result.innerHTML += `<br>`
+    }
+</script>
+
+</html>

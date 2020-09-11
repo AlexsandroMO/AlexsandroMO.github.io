@@ -64,6 +64,19 @@ h3{
     margin-left: 15px;
 }
 
+#juros{
+    margin-left: 0px;
+}
+
+#var{
+    width: 90%;
+    text-align: center;
+    border:solid 3px #000000;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+
+}
 
 /*botão adicionar*/
 
@@ -458,8 +471,9 @@ h5{
   }
 
 
-
-
+.numberinput {
+    width: 90%;
+}
 
 
 

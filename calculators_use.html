@@ -12,7 +12,7 @@
     
 </head>
 
-<body onload="readProjDB()">
+<body>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <a class="navbar-brand" href="index.html" id="click-out">Meus Projetos</a>
@@ -29,7 +29,7 @@
 </nav>
 
 <div class="col-sm-5 list-div">
-<h3>Calculadora de Juros Compostos</h3>
+<h3 id="juros">Juros Compostos</h3>
     <form id="form-juros">
         <div id="div_id_r_project" class="form-group">
             <label for="id_r_capital" class=" requiredField">
@@ -60,13 +60,16 @@
                     <td id="td-td">
                         <input type="submit" class="btn btn-success" value="Calcular" id="adicionar" onclick="Calcular()">
                     </td>
-
-                    <td id="td-td">
-                        <div id="var"></div>
-                    </td>
+  
             </table>
 
     </form>
+    <br>
+    <td id="td-td">
+        <div id="var"></div>
+        <p id="linha-1"></p>
+        <p id="linha-2"></p>
+    </td>
 
 </div>
 
@@ -76,8 +79,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- <script src="bootstrap.min.css"></script> -->
     <script src="scripts.js"></script>
-    <script src="db_proj.js"></script>
-    <script src="db_circuit.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -100,17 +101,56 @@
 
             let form = document.querySelector("#form-juros");
             let result = document.getElementById("var");
+            let result1 = document.getElementById("linha-1");
+            let result2 = document.getElementById("linha-2");
+
+            let status = '';
+            // let status_capital = false;
+            // let status_taxa = false;
+            // let status_tempo = false;
 
             let J = JurosFormulario(form)
 
-            let M = J.capital * (Math.pow((1 + (J.taxa/100)), (J.tempo/12)))
-            let M1 = (1 + (J.taxa/100))
-            let M2 = Math.pow(M1, (J.tempo/12))
-            let M3 = J.capital * M2
-            let Juros_final = M - J.capital
+            if (!J.capital){
+                //status_capital = false;
+                status += 'Capital ';
+            }
 
-            result.innerHTML = `<h3>Montante: ${parseFloat(M.toFixed(2))} | Juros: ${parseFloat(Juros_final.toFixed(2))} </h3>`
+            if (!J.taxa){
+                //status_taxa= false;
+                status += 'Taxa ';
+            }
+
+            if (!J.tempo){
+                //status_tempo = false;
+                status += 'Tempo ';
+            }
+
+            console.log('>>>>>>', status)
+            console.log('||||||', status.length)
+
+            //if (status_capital == true || status_taxa == true || status_tempo == true){
+            if (status.length == 0){
+                let M = J.capital * (Math.pow((1 + (J.taxa/100)), (J.tempo/12)))
+                let M1 = (1 + (J.taxa/100))
+                let M2 = Math.pow(M1, (J.tempo/12))
+                let M3 = J.capital * M2
+                let Juros_final = M - J.capital
+
+                let texto_1 = `<h4>Total: ${parseFloat(M.toFixed(2))} </h4>`
+                let texto_2 = `<h4>Juros: ${parseFloat(Juros_final.toFixed(2))} </h4>`
+                result.innerHTML = texto_1 + texto_2
+            }
             
+            else{
+                if(status.length <= 8){
+                    alert(`É necessário inserir valores no campo ${status}`)
+                }
+                else{
+                    alert(`É necessário inserir valores nos campos ${status}`)
+                }
+                form.reset();
+            }
         }
 
     </script>
