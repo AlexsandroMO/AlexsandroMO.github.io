@@ -303,6 +303,11 @@ ul.messages li{
     max-width: 100%;
 }
 
+#row-juros{
+    padding-left: 15px;
+    max-width: 100%;
+}
+
 .col-sm-5{
     padding-left: 30px;
     padding-bottom: 20px;
