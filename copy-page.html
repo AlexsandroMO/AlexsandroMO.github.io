@@ -1,249 +1,97 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
-
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
-    <title>Document</title>
-</head>
-<body>
-    <h3>Hello DataBase</h3>
-    <p id="canvas">Dados</p>
-</body>
-
-<!-- <script type="text/javascript"> -->
-<script>
-
-
-noStroke();
-var x = 11; // position of the car
-
-/*
-var draw = function() {
-     
-};
-*/
-
-var drawCar = function() {
-    background(252, 255, 214);
-
-    // draw the car body
-    fill(255, 0, 115);
-    rect(x, 200, 100, 20);
-    rect(x + 15, 178, 70, 40);
-    
-    // draw the wheels
-    fill(77, 66, 66);
-    ellipse(x + 25, 221, 24, 24);
-    ellipse(x + 75, 221, 24, 24);
-    
-    x = x + 3;
-};
-
-mouseMoved = function() {
-    fill(mouseX, mouseY, mouseY);
-    ellipse(mouseX, mouseY, 10, 10);
-};
-
-
-//let int_x = 5
-
-/* var x = 0;
-var y = 0;
-
-draw = function() {
-    background(255, 255, 255);
-    
-    noStroke();
-    fill(79, 255, 94);
-    
-    // Moves across the canvas, getting taller
-    ellipse(x, 200, 30, 30+x/3);
-    
-    // Moves down the canvas, getting wider
-    ellipse(200, y, 30+y/3, 30);
-    
-    // Add one to each of the variables
-    x++;
-    y++;
-}; */
-
-
-
-// //var file = open("F:/MY/PASTA/DatabaseJS.accdb", true);
-
-// var db = openDatabase("F:/MY/PASTA/DatabaseJS.accdb", "2.0", "DADOS_JS", 4048);
-
-// db.transaction(function(tx) {
-//     tx.executeSql('SELECT * FROM DADOS_JS', [], function (tx, resultado) {
-//         var rows = resultado.rows;
-//         console.log(rows)
-    
-//     }, null);
-// });
-
-
-
-
-//http://www.macoratti.net/asp_dbjs.htm
-
-
-/*     function createFile() {    
-        var object = new ActiveXObject("Scripting.FileSystemObject");       
-        var file = object.CreateTextFile("F:\Hello.txt", true);
-        file.WriteLine('Hello World');
-        alert('Filecreated');
-        file.WriteLine('Hope is a thing with feathers, that perches on the soul.'); 
-        file.Close();
-
-    }
- */
-
-
-/* 
-var conn = Server.CreateObject("ADODB.Connection");
-var recordSet = Server.CreateObject("ADODB.RecordSet");
-
-conn.connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=c:/teste/testes.mdb";
-conn.Open();
-recordSet.Open("select * from produtos;",conn);
-
-Response.write("Macoratti.net - Tabela de Preços para remessa via carta registrada");
-
-Response.Write("<table bgcolor='aqua' border=1>");
-
-while(!recordSet.EOF)
-{
-  Response.Write("<tr>");
-
-  Response.Write("<td>");
-  Response.Write(recordSet("nome"));
-  Response.Write("</td>");
-
-  Response.Write("<td>");
-  Response.Write(recordSet("descricao"));
-  Response.Write("</td>");
-
-  Response.Write("<td>"); Response.Write("R$ ");
-  Response.Write(recordSet("preco sugerido"))
-  Response.Write("</td>");
-  Response.Write("</tr>");
-
-  recordSet.MoveNext();
-}
-
-Response.Write("</table>");
-conn.close();
-conn = null;
-*/
-
-/*     var cn = new ActiveXObject("ADODB.CONNECTION");
-    var rs = new ActiveXObject("ADODB.RECORDSET");
-
-    console.log(cn)
-
-    function Conecta(){
-        console.log('entrou')
-        if (cn.state == 1){
-            cn.close();
-        }
-        var caminho = "";
-        var diretorio = "";
-        diretorio = unescape(window.location.href.substring( 8 , (window.location.href.lastIndexOf ( "/" )) + 1 ))
-        //caminho = diretorio + "banco.mdb"
-        caminho = diretorio + "DatabaseJS.accdb"
-        connString = "DRIVER={Microsoft Access Driver (*.mdb)};DBQ=" + caminho;
-        cn.open(connString);
-    }
-    function Desconecta(){
-        if (cn.state == 1)
-        cn.close();
-    }
-
-    function fVerifica(){
-        frm.txtEstado.value = cn.state;
-    }
-
-    Conecta()
- */
- 
-    //cst = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & _Server.MapPath("F:\MY\PASTA\DatabaseJS.accdb");
-    //let conn = CreateObject("ADODB.Connection")
-
-    //var recordset = Server.CreateObject("ADODB.Recordset")
-    // conn.open
-    // cst sql = "select * from DADOS_JS"
-    // set consulta = conn.execute(sql)
-
-    // var fs = require('fs');
-    // var express = require('express');
-    // var path = require('path');
-    // var other = require('./other');
-
-
-    // var app = express();
-
-    // app.get('/copy-page', other.index);
-    // app.get('/', other.index);
-
-    // app.listen(8006);
-
-    console.log('Hello')
-
-
-/* 
-    //var connection = new ActiveXObject("ADODB.Connection") ;
-    var connection = new ActiveXObject("DatabaseJS.accdb") ;
-    //DatabaseJS.accdb
-
-    var connectionstring="Data Source=<server>;Initial Catalog=<catalog>;User ID=<user>;Password=<password>;Provider=SQLOLEDB";
-
-    connection.Open(connectionstring);
-    var rs = new ActiveXObject("ADODB.Recordset");
-
-    rs.Open("SELECT * FROM table", connection);
-    rs.MoveFirst
-    while(!rs.eof)
-    {
-    document.write(rs.fields(1));
-    rs.movenext;
-    }
-
-    rs.close;
-    connection.close;  */
-
-/*     function DB(ocorrencia, data, hora, solicitante, empresa, email, assunto, desc, dataG, AceiteG, dataTI, AceiteTI, obs, HDobs) 
-
-{
-		var myConnect = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source="C:\Documents and Settings\caroline.mathias\Meus documentos\Projetos\Registro\Registro.accdb"; 	
-	var ConnectObj = new ActiveXObject("ADODB.Connection");
-	var RS = new ActiveXObject("ADODB.Recordset");
-	var sql = "INSERT INTO Registro(ID_Ocorrencia, Data, Hora, Solicitante, Empresa, email, Assunto, Descricao,Geografia, Aceite_G, TI, Aceite_TI, Obs, HD) VALUES('" + ocorrencia + "', '" + data + "', '" + hora + "', '" + solicitante + "', '" + empresa + "', '" + email + "', '" + assunto + "', '" + desc + "', '" + dataG + "', '" + AceiteG + "', '" + dataTI + "', '" + AceiteTI + "', '" + obs + "', '" + HDobs +"')";
-	ConnectObj.Open (myConnect);
-	RS.Open(sql,ConnectObj,adOpenForwardOnly,adLockReadOnly,adCmdText);
-	var fieldCount = RS.Fields.Count;
-	alert("Field Count" + fieldCount);
-	RS.Close();
-	ConnectObj.Close();
-    alert("executado"); 
-    }
-    */
-
-            
-</script>
-</html>
-
 <!-- 
-<% 
-cst = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & _Server.MapPath("C:\Inetpub\vhosts\meuwebsite.com\httpdocs\db\nome_do_banco.mdb") 
-set conn = CreateObject("ADODB.Connection") conn.open cst sql = "select * from tabela" set consulta = conn.execute(sql)
+https://eloquentjavascript.net/17_canvas.html 
+https://developer.mozilla.org/pt-BR/docs/Web/Guide/HTML/Canvas_tutorial/Drawing_shapes
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations
+-->
 
-%> -->
+
+<body onload="draw()">
+    <canvas width="600" height="400" id="box"></canvas>
+    <br>
+    <br>
+    <canvas width="600" height="400" id="canvas"></canvas>
+    
+    </body>
+    
+    <script>
+        //https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Advanced_animations
+    
+        
+        function draw() {
+            cicle.clearRect(0,0, canvas.width, canvas.height);
+            ball.draw();
+            ball.x += ball.vx;
+            ball.y += ball.vy;
+            raf = window.requestAnimationFrame(draw);
+        }
+    
+        
+        let cicle = document.querySelector("canvas").getContext("2d");
+        
+        var raf;
+    
+        var ball = {
+            x: 100,
+            y: 100,
+            vx: 3,
+            vy: 0,
+            radius: 50,
+            //color: 'blue',
+            draw: function() {
+                cicle.beginPath();
+                //cicle.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+                cicle.arc(this.x, this.y, this.radius, 0, 10);
+                cicle.lineWidth = 3;
+                cicle.closePath();
+                cicle.fillStyle = this.color;
+                cicle.fill();
+            }
+    
+        };
+    
+    
+    /* canvas.addEventListener('mouseover', function(e) {
+      raf = window.requestAnimationFrame(draw);
+    });
+    
+    canvas.addEventListener('mouseout', function(e) {
+      window.cancelAnimationFrame(raf);
+    }); */
+    
+        ball.draw();
+    </script>
+    
+    
+    
+    
+    <!-- 
+    <script>
+    
+        let x = 100;
+        let y = 100;
+    
+        var raf;
+    
+        let cicle = document.querySelector("canvas").getContext("2d");
+    
+        cicle.beginPath();
+        cicle.arc(x, y, 50, 0, 25);
+        cicle.lineWidth = 2;
+        cicle.stroke();
+    
+        document.addEventListener('mouseover', draw);
+    
+        function draw() {
+    
+            while (x < 500){
+                cicle.clearRect(0,0, canvas.width, canvas.height);
+                cicle.beginPath();
+                cicle.arc(x, y, 50, 0, 10);
+                cicle.lineWidth = 3;
+                cicle.stroke();
+                x += 3;
+            } 
+    
+        };
+    
+    </script>  -->
