@@ -20,8 +20,9 @@ Digite:
 $ ssh -T git@github.com
 Digite: yes
 
+cat ~/.ssh/id_rsa.pub << mac
 
-
+AlexsandroMO + senha
 
 
 '''Upload documents on Github

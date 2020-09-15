@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="x-ua-Compatible" content="ie-edge">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="index.html" id="click-out">Meus Projetos</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" id="alinha-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html" id="click-out">Home</a>
+            </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="col-sm-5 list-div">
+<h3 id="juros">Juros Compostos</h3>
+    <form id="form-juros">
+        <div id="div_id_r_project" class="form-group">
+            <label for="id_r_capital" class=" requiredField">
+                Capital Inicial<span class="asteriskField"></span>
+            </label>
+            <div class="">
+                <input type="text" name="r_capital" class="numberinput form-control" required id="id_r_capital">
+            </div>
+
+            <div id="div_id_r_taxa" class="form-group">
+            <label for="id_r_taxa" class=" requiredField">
+                Taxa de Juros Aplicada<span class="asteriskField"></span>
+            </label>
+            <div class="">
+                <input type="text" name="r_taxa" class="numberinput form-control" required id="id_r_taxa">
+            </div>
+
+            <div id="div_id_r_tempo" class="form-group">
+            <label for="id_r_tempo" class=" requiredField">
+                Tempo (Duração do Investimento em Meses)<span class="asteriskField"></span>
+            </label>
+            <div class="">
+                <input type="text" name="r_tempo" class="numberinput form-control" required id="id_r_tempo">
+            </div>
+            <br>
+            <table>
+                <tr>
+                    <td id="td-td">
+                        <input type="submit" class="btn btn-success" value="Calcular" id="adicionar" onclick="Calcular()">
+                    </td>
+  
+            </table>
+
+    </form>
+    <br>
+    <td id="td-td">
+        <div id="var"></div>
+        <p id="linha-1"></p>
+        <p id="linha-2"></p>
+    </td>
+
+</div>
+
+
+</body>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- <script src="bootstrap.min.css"></script> -->
+    <script src="scripts.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+
+        function JurosFormulario(form) {
+            event.preventDefault();
+
+            let juros = {
+                capital: parseFloat(form.id_r_capital.value),
+                taxa: parseFloat(form.id_r_taxa.value),
+                tempo: parseFloat(form.id_r_tempo.value)
+            }
+            return juros;
+        }
+
+        function Calcular(){
+
+            let form = document.querySelector("#form-juros");
+            let result = document.getElementById("var");
+            let result1 = document.getElementById("linha-1");
+            let result2 = document.getElementById("linha-2");
+
+            let status = '';
+            // let status_capital = false;
+            // let status_taxa = false;
+            // let status_tempo = false;
+
+            let J = JurosFormulario(form)
+
+            if (!J.capital){
+                //status_capital = false;
+                status += 'Capital ';
+            }
+
+            if (!J.taxa){
+                //status_taxa= false;
+                status += 'Taxa ';
+            }
+
+            if (!J.tempo){
+                //status_tempo = false;
+                status += 'Tempo ';
+            }
+
+            console.log('>>>>>>', status)
+            console.log('||||||', status.length)
+
+            //if (status_capital == true || status_taxa == true || status_tempo == true){
+            if (status.length == 0){
+                let M = J.capital * (Math.pow((1 + (J.taxa/100)), (J.tempo/12)))
+                let M1 = (1 + (J.taxa/100))
+                let M2 = Math.pow(M1, (J.tempo/12))
+                let M3 = J.capital * M2
+                let Juros_final = M - J.capital
+
+                let texto_1 = `<h4>Total: ${parseFloat(M.toFixed(2))} </h4>`
+                let texto_2 = `<h4>Juros: ${parseFloat(Juros_final.toFixed(2))} </h4>`
+                result.innerHTML = texto_1 + texto_2
+            }
+            
+            else{
+                if(status.length <= 8){
+                    alert(`É necessário inserir valores no campo ${status}`)
+                }
+                else{
+                    alert(`É necessário inserir valores nos campos ${status}`)
+                }
+                form.reset();
+            }
+        }
+
+    </script>
+
+</html>

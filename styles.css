@@ -64,6 +64,19 @@ h3{
     margin-left: 15px;
 }
 
+#juros{
+    margin-left: 0px;
+}
+
+#var{
+    width: 90%;
+    text-align: center;
+    border:solid 3px #000000;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+
+}
 
 /*botão adicionar*/
 
@@ -290,6 +303,11 @@ ul.messages li{
     max-width: 100%;
 }
 
+#row-juros{
+    padding-left: 15px;
+    max-width: 100%;
+}
+
 .col-sm-5{
     padding-left: 30px;
     padding-bottom: 20px;
@@ -350,6 +368,12 @@ ul.messages li{
     margin-right: 20px;
 }
   
+#td-td{
+    background-color:#fff;
+    margin-right: 20px;
+    border: 0px solid #ddd;
+}
+
 /**Cor quando selecionado**/
 .table tr.selecionado td{
     background-color: #CD853F;
@@ -452,8 +476,9 @@ h5{
   }
 
 
-
-
+.numberinput {
+    width: 90%;
+}
 
 
 
