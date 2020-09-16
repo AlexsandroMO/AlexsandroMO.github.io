@@ -16,14 +16,13 @@ https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_anima
 
 <body onload="draw()">
 
-    <h3></h3>
+    <h3>Para o código baixe o arquivo em: <a href="https://github.com/AlexsandroMO/AlexsandroMO.github.io/blob/master/test-canvas.html" target="_blank">github/test-canvas</a></h3>
     <canvas width="600" height="300" id="canvas"></canvas>
 
 </body>
 
 <script>
 
-    let text = document.querySelector("h3")
     let animation_cicle = document.querySelector("canvas").getContext("2d");
     let animation;
 
@@ -53,7 +52,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_anima
 
         if(cicle.x > 700){
             console.log('Foi!')
-            text.innerHTML = `Para o código baixe o arquivo em:<br><a href="https://github.com/AlexsandroMO/AlexsandroMO.github.io/blob/master/test-canvas.html" target="_blank">github/test-canvas</a>`
+            mostrar()
             
         }
     }
@@ -61,5 +60,21 @@ https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_anima
     cicle.draw();
 
 </script>
+
+
+<script>
+
+    ocultar()
+
+    function ocultar(evt) {
+        document.querySelector("h3").style.display = "none";
+    }
+
+    function mostrar(evt) {
+        document.querySelector("h3").style.display = "block";
+    }
+
+</script>
+
 
 </html>
