@@ -1,9 +1,16 @@
 <!-- 
+Exercício:
+
+Etapa 1 Declare uma variável do tipo Número com um nome que inclua o prefixo int ou nmb, que chamarei de x por agora e que deve corresponder à posição do eixo x de um marcador.  
+Etapa 2 Na função draw (), você precisa criar uma bola (representada por um círculo) de 50px de diâmetro.  Esta bola é desenhada no local x (valor da variável criada no passo 1).  
+Esta bola agora deve se mover para a direita em 3 pixels.  Você deve, portanto, incrementar a variável x.  
+Quando você tiver concluído com êxito a etapa 2, sua bola desaparecerá rapidamente fora do escopo à direita.
+
+Material encontrado:
 https://eloquentjavascript.net/17_canvas.html 
 https://developer.mozilla.org/pt-BR/docs/Web/Guide/HTML/Canvas_tutorial/Drawing_shapes
 https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations
 //https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Advanced_animations
-
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -55,23 +62,20 @@ https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_anima
 		//incrementa os 3 px na função
         cicle.x += cicle.speed_x;
         animation = window.requestAnimationFrame(draw);
-        
+	    
+        //isso não faz parte do código pedido pelo exercício-------
         console.log(cicle.x)
 
         if(cicle.x > 700){
             console.log('Foi!')
             mostrar()
-            
         }
-
+	//---------------------------------------------------------
     }
 
 </script>
-
-    
-    
-    
-<!--Isso não faz parte do códico é apenas uma função para ocultar a tag h3-->
+ 
+<!--Isso não faz parte do códico pedido pelo exercício é apenas uma função para ocultar a tag h3-->
 <script>
 
     ocultar()
