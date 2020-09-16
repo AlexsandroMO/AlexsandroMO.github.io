@@ -22,17 +22,22 @@ https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_anima
 </body>
 
 <script>
+    
+    // variável que usa a canvas do HTML pra mostrar o circuo na tela
+	let animation_cicle = document.querySelector("canvas").getContext("2d");
+    //variável que vai controlar o movimento do circulo
+	let animation;
 
-    let animation_cicle = document.querySelector("canvas").getContext("2d");
-    let animation;
-
+	//aqui criei uma esécide de objeto circulo e dei características pra ele
     let cicle = {
-        x: 100, // Etapa 1
+        //caracteristica de movimentação
+		x: 100, // Etapa 1
         speed_x: 3, //Etapa 3
         radius: 50, //Etapa 2
         color: '#1d1413',
 
-        draw: function() {
+        //caracteristicas do circuo
+		draw: function() {
             animation_cicle.beginPath();
             animation_cicle.arc(this.x, 100, this.radius, 0, 10);
             animation_cicle.fillStyle = this.color;
@@ -40,14 +45,17 @@ https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_anima
             animation_cicle.fill();
         }
     };
-
+	
+	//função draw pedido no exercício
     function draw() { //Etapa 2
         
+		//limpa a tela a cada moviento do circulo
         animation_cicle.clearRect(0,0, canvas.width, canvas.height);
         cicle.draw();
+		//incrementa os 3 px na função
         cicle.x += cicle.speed_x;
         animation = window.requestAnimationFrame(draw);
-
+        
         console.log(cicle.x)
 
         if(cicle.x > 700){
@@ -55,9 +63,8 @@ https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_anima
             mostrar()
             
         }
-    }
 
-    cicle.draw();
+    }
 
 </script>
 
