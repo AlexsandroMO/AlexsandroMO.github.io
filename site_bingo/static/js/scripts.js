@@ -45,7 +45,7 @@ function clear_all(){
 
     setTimeout(function() {
         window.location.href = "../templates/home.html";
-    }, 5000);
+    }, 2000);
     
 }
 
