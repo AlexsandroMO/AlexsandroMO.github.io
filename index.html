@@ -12,7 +12,7 @@
     
 </head>
 
-<body onload="readProjDB()">
+<body>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <a class="navbar-brand" href="index.html" id="click-out">Meus Projetos</a>
@@ -24,7 +24,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="index.html" id="click-out">Home</a>
             </li>
-<!--             <li class="nav-item">
+              <!--<li class="nav-item">
                 <a class="nav-link" href="#">Calculadora CKT</a>
             </li> -->
             <li class="nav-item dropdown">
@@ -45,19 +45,20 @@
   </div>
 </nav>
 
-    <div class="row">
-        <h3>Portal de Desenvolvimento</h3>
+<!-- <div class="row"> -->
+  <div class="container">
+    <div class="box">
+  <!-- <div class="col-12"> -->
+      <h3 >Portal de Desenvolvimento</h3>
         <div id="alinha-img">
-            <div class="row" id="row-juros">
-                <canvas width="600" height="400" id="canvas"></canvas>
-                <!-- <img src="Prog1.png" width=100% alt="some text" >
-                <br>
-                <img src="Prog2.png" width=100% alt="some text"> -->
-            </div>
+          <canvas width="600" height="400" id="canvas"></canvas>
+          <!-- <img src="Prog1.png" width=100% alt="some text" >
+          <br>
+          <img src="Prog2.png" width=100% alt="some text"> -->
         </div>
-    </div>
+  </div>
+</div>
 
-    
 
 </body>
 
@@ -74,53 +75,57 @@
 
 <script>
 
-    var sun = new Image();
-    var moon = new Image();
-    var earth = new Image();
-    function init() {
-      sun.src = 'https://mdn.mozillademos.org/files/1456/Canvas_sun.png';
-      moon.src = 'https://mdn.mozillademos.org/files/1443/Canvas_moon.png';
-      earth.src = 'https://mdn.mozillademos.org/files/1429/Canvas_earth.png';
-      window.requestAnimationFrame(draw);
-    }
+  let sun = new Image();
+  let moon = new Image();
+  let earth = new Image();
+
+  function init() {
+    sun.src = 'https://mdn.mozillademos.org/files/1456/Canvas_sun.png';
+    moon.src = 'https://mdn.mozillademos.org/files/1443/Canvas_moon.png';
+    earth.src = 'https://mdn.mozillademos.org/files/1429/Canvas_earth.png';
+
+    window.requestAnimationFrame(draw);
+  }
+  
+  function draw() {
+
+    let ctx = document.getElementById('canvas').getContext('2d');
+  
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.clearRect(0, 0, 300, 300); // clear canvas
+  
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+    ctx.strokeStyle = 'rgba(0, 153, 255, 0.4)';
+    ctx.save();
+    ctx.translate(150, 150);
+  
+    // Earth
+    let time = new Date();
+    ctx.rotate(((2 * Math.PI) / 60) * time.getSeconds() + ((2 * Math.PI) / 60000) * time.getMilliseconds());
+    ctx.translate(105, 0);
+    ctx.fillRect(0, -12, 40, 24); // Shadow
+    ctx.drawImage(earth, -12, -12);
+  
+    // Moon
+    ctx.save();
+    ctx.rotate(((2 * Math.PI) / 6) * time.getSeconds() + ((2 * Math.PI) / 6000) * time.getMilliseconds());
+    ctx.translate(0, 28.5);
+    ctx.drawImage(moon, -3.5, -3.5);
+    ctx.restore();
+  
+    ctx.restore();
     
-    function draw() {
-      var ctx = document.getElementById('canvas').getContext('2d');
+    ctx.beginPath();
+    ctx.arc(150, 150, 105, 0, Math.PI * 2, false); // Earth orbit
+    ctx.stroke();
     
-      ctx.globalCompositeOperation = 'destination-over';
-      ctx.clearRect(0, 0, 300, 300); // clear canvas
-    
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
-      ctx.strokeStyle = 'rgba(0, 153, 255, 0.4)';
-      ctx.save();
-      ctx.translate(150, 150);
-    
-      // Earth
-      var time = new Date();
-      ctx.rotate(((2 * Math.PI) / 60) * time.getSeconds() + ((2 * Math.PI) / 60000) * time.getMilliseconds());
-      ctx.translate(105, 0);
-      ctx.fillRect(0, -12, 40, 24); // Shadow
-      ctx.drawImage(earth, -12, -12);
-    
-      // Moon
-      ctx.save();
-      ctx.rotate(((2 * Math.PI) / 6) * time.getSeconds() + ((2 * Math.PI) / 6000) * time.getMilliseconds());
-      ctx.translate(0, 28.5);
-      ctx.drawImage(moon, -3.5, -3.5);
-      ctx.restore();
-    
-      ctx.restore();
-      
-      ctx.beginPath();
-      ctx.arc(150, 150, 105, 0, Math.PI * 2, false); // Earth orbit
-      ctx.stroke();
-     
-      ctx.drawImage(sun, 0, 0, 300, 300);
-    
-      window.requestAnimationFrame(draw);
-    }
-    
-    init();
-    
-    </script>
+    ctx.drawImage(sun, 0, 0, 300, 300);
+  
+    window.requestAnimationFrame(draw);
+  }
+  
+  init();
+  
+  </script>
+
 </html>
