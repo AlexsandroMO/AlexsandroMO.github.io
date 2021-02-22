@@ -42,7 +42,7 @@ function clear_all(){
     });
 
     setTimeout(function() {
-        window.location.href = "file:///F:/Visual_Studio/Bingo_JavaScript_Version/templates/home.html";
+        window.location.href = "../templates/home.html";
     }, 5000);
     
 }
