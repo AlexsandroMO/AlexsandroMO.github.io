@@ -41,6 +41,8 @@ function clear_all(){
         tx.executeSql('INSERT INTO bingo VALUES (?)', []);
     });
 
+    alert('Espere um Momento. Estamos Lipando o Banco de Dados pra Você')
+
     setTimeout(function() {
         window.location.href = "../templates/home.html";
     }, 5000);
