@@ -1,12 +1,6 @@
 
-
-.container-fluid .row{
-    margin: 0;
-    align-items: center;
-    
-}
-
 .container {
+    margin: 0;
     width: auto;
     height: auto;
     /* background: #6C7A89; */
