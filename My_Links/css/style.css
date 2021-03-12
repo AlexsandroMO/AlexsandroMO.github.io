@@ -1,0 +1,33 @@
+
+.content{
+    padding: 0;
+    margin: 0;
+}
+
+.container-fluid{
+    padding-left: 50px;
+    padding-top: 30px;
+    margin: 10;
+
+}
+
+.card{
+    padding: 20px;
+    
+}
+
+.logo__img{
+    width: 80;
+    height: 70;
+}
+
+.alinha-div{
+    float: right;
+}
+
+
+/* 
+div class="container-fluid" >
+        <div class="row">
+            <div class="col-3" >
+                <div class="card" > */
