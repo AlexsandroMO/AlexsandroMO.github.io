@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <title>Análises de Textos</title>
@@ -44,11 +45,11 @@
             text-shadow: 0.1em 0.1em 0.07em #333;
         }
 
-        #alinha-options{   
+        #alinha-options{ 
             position: relative;
-            left: 45%;
+            left: 50%;
         }
-
+    
         #sep-text{
             border-radius: 10px;
             padding: 2px;
@@ -89,14 +90,24 @@
             padding-left: 10px;  
         }
 
+        #option_sbr{
+            margin-left: 20px;
+            padding-left: 10px;  
+        }
+
         #bt1{
             font-style: Arial, sans-serif;
             font-weight: normal;
-            width: 130px;
-            height: 40px;
             text-align: center;
-            margin-right: 5px;
+            margin-right: 1px;
         }
+
+		.fas.fa-trash{
+            color:rgba(189, 81, 31, 0.836);
+			position: absolute;
+			left: 560px;
+		}
+		
         #p-alinha-button{
             padding-top: 20px;
         }
@@ -113,7 +124,9 @@
 <!--###########################################################-->
 <body>
     <contaner>
-
+        <header>
+            <p id="alinha-texto-logo">Itaguai Construções Navais</p>
+        </header>
 
         <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="alinha-nav">
             Analises de Textos
@@ -124,29 +137,52 @@
                 <p>Options:
                     <input type="radio" name="option_test" id="option_test" checked>
                     <label for="Separa">Separa</label>
-                    <input type="radio" name="option_test" id="option_test">
+                    <input type="radio" name="option_test" id="option_test2">
                     <label for="Ajusta">Concatenar</label>
                 </p>
             </div>
-
+           <hr>
+           <div id="alinha-options2">
+                <p>SBRs:
+                    <input type="radio" name="option_sbr" id="option_sbr" checked>
+                    <input type="radio" name="option_sbr" id="option_sbr">
+                    <label for="SBR1">SBR1</label>
+                    <input type="radio" name="option_sbr" id="option_sbr">
+                    <label for="SBR2">SBR2</label>
+                    <input type="radio" name="option_sbr" id="option_sbr">
+                    <label for="SBR3">SBR3</label>
+                    <input type="radio" name="option_sbr" id="option_sbr">
+                    <label for="SBR4">SBR4</label>
+                </p>
+                <hr>
+            </div>
+            
             <div id="sep1">
                 
                 <p><strong>Busca de Textos:</strong>
                     <input type="text" name="sep-text" id="sep-text">
+					<i class="fas fa-trash" id="limpa-1"></i>
                 </p>
+
                 <p><strong>Prefixo:</strong>
                     <input type="text" name="var-text" id="var-text-pre">
                     <strong id=alinha-texto-suf>Sufixo:</strong>
                     <input type="text" name="var-text" id="var-text-suf">
+                    <i class="fas fa-trash" id="limpa-2"></i>
+					
                 </p>
-                <div> 
+
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <p id="p-alinha-button">  
-                        <button type="button" class="btn btn-secondary" id="bt1" onclick="analisa()">Analisar</button>
-                        <button type="button" class="btn btn-warning" id="bt1" onclick="limpar()">Limpar</button>
+                        <button type="button" class="btn btn-secondary btn-sm" id="bt1" onclick="analisa()">Analisar</button>
+                        <button type="button" class="btn btn-warning btn-sm" id="bt1" onclick="limpar()">Limpar Tudo</button>
                     </p>
                 </div>
+				
+				<!-- <input type="button" class="btn-sm" id="bt2"> -->
+				<!-- <input type="button" class="btn-sm" id="bt3"> -->
+				
             </div>
-            
             <div>
                 <hr>
                 <p><strong>Lista:</strong></p>
@@ -156,8 +192,24 @@
 
     </contaner>
 </body>
+
+
 <!--###########################################################-->
 <script>
+
+ocultar()
+
+document.getElementById('option_test').addEventListener('click', ocultar, false);
+document.getElementById('option_test2').addEventListener('click', mostrar, false);
+
+function ocultar(evt) {
+	document.getElementById("alinha-options2").style.display = "none";
+}
+
+function mostrar(evt) {
+	document.getElementById("alinha-options2").style.display = "block";
+}
+
     //window.alert('ok!')
     function analisa(){
         var in_text = document.getElementById('sep-text')
@@ -184,8 +236,6 @@
                 }
 
                 for (let a=0; a<list_breaked.length; a++){
-
-                    //res.innerHTML += list_breaked[a] + '<br>'
             
                     if (text_pre.value == list_breaked[a][0]){
                         res.innerHTML += list_breaked[a] + '<br>'
@@ -222,10 +272,11 @@
             }
         }
         else if (option_test[1].checked){
-           // Libera a análise de separação
-           //window.alert("ok")
 
-            if (in_text.value.length == 0 || text_pre.value.length == 0){
+            
+           // Libera a análise de separação
+           
+            if (in_text.value.length == 0){
                 window.alert('[ERRO] - É preciso preencher os campos par análise')
             }else{
 
@@ -233,10 +284,33 @@
                     new_text = match_test[a]
                     list_breaked[a] = new_text 
                 }
-
-                for (let a=0; a<list_breaked.length; a++){
-                    res.innerHTML += text_pre.value + list_breaked[a] + text_suf.value + "<br>"
+                var sbr = ''
+				
+			
+				if (option_sbr[0].checked){
+					sbr = ''
+				}
+                else if (option_sbr[1].checked){
+                    sbr = '53A-'
                 }
+                else if (option_sbr[2].checked){
+                    sbr = '53B-'
+                }
+                else if (option_sbr[3].checked){
+                    sbr = '53C-'
+                }
+                else if (option_sbr[4].checked){
+                    sbr = '53D-'
+                }else{
+                    sbr = text_pre.value
+                }
+                console.log(sbr)
+				
+                for (let a=0; a<list_breaked.length; a++){
+                        res.innerHTML += text_pre.value + sbr + list_breaked[a] + text_suf.value + "<br>"
+						
+                    }
+ 
             }
 
         }
@@ -244,18 +318,39 @@
     
     function limpar(){
         //window.alert("ok")
-
         var in_text = document.getElementById('sep-text')
         var text_pre = document.getElementById('var-text-pre')
         var text_suf = document.getElementById('var-text-suf')
         var res = document.getElementById('result')
-        res.innerHTML = ''
-        text_pre.value = ''
-        text_suf.value = ''
-        in_text.value = ''
+		
+		var bt2 = document.getElementById('bt2')
+		var bt3 = document.getElementById('bt3')
+		
+		res.innerHTML = ''
+		text_pre.value = ''
+		text_suf.value = ''
+		in_text.value = ''
     }
 
+document.getElementById('limpa-1').addEventListener('click', clear_1, false);
+document.getElementById('limpa-2').addEventListener('click', clear_2, false);
+
+function clear_1(evt) {
+	var in_text = document.getElementById('sep-text');
+    in_text.value= '' ;
+}
+
+function clear_2(evt) {
+	var text_pre = document.getElementById('var-text-pre')
+    var text_suf = document.getElementById('var-text-suf')
+    text_pre.value= '' ;
+	text_suf.value= '' ;
+}
+
+
 </script>
+
 <!--###########################################################-->
 <!--<script src="script_sep.js"></script>-->
+
 </html>
